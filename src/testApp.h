@@ -21,10 +21,10 @@
 #include "SpaceShip.h"
 
 class testApp : public ofBaseApp{
-<<<<<<< HEAD
-<<<<<<< HEAD
+/*<<<<<<< HEAD
+<<<<<<< HEAD*/
 
-	public:
+	/*public:
     
 		void setup();
 		void update();
@@ -40,11 +40,11 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        SpaceShip ship1;
+        SpaceShip ship1;*/
 		
+/*=======
 =======
-=======
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
+>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6*/
     
 public:
     void setup();
@@ -73,8 +73,11 @@ public:
     void drawWings();
     float theta = 30;
     int generation;
-<<<<<<< HEAD
+    
+    // Mauricio
+    SpaceShip ship1;
+/*<<<<<<< HEAD
 >>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
 =======
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
+>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6*/
 };

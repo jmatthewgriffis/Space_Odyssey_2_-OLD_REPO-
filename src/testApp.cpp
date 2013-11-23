@@ -10,49 +10,49 @@ void testApp::setup(){
     ofEnableAlphaBlending();
     ofBackground( 0 );
     
-<<<<<<< HEAD
-<<<<<<< HEAD
+/*<<<<<<< HEAD
+<<<<<<< HEAD*/
     
     ship1.setup(ofVec2f( ofGetWindowWidth() / 2 , ofGetWindowHeight() / 2), 2, ofColor( ofColor( 20, 20, 200)));
     
+/*=======
 =======
-=======
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
+>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6*/
     // Matt
     generation = 0;
     pos = ofGetWindowSize() / 2.0;
     //cam.setDistance(0);
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 >>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
 =======
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
+>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6*/
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
     
-<<<<<<< HEAD
-<<<<<<< HEAD
+/*<<<<<<< HEAD
+<<<<<<< HEAD*/
     ship1.update();
 
+//=======
+    pos.set( mouseX, mouseY );
+/*>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
 =======
     pos.set( mouseX, mouseY );
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
-=======
-    pos.set( mouseX, mouseY );
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
+>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6*/
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
-<<<<<<< HEAD
-<<<<<<< HEAD
+/*<<<<<<< HEAD
+<<<<<<< HEAD*/
     ship1.draw();
 
+/*=======
 =======
-=======
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
+>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6*/
     // Matt
     //cam.begin(); //
     //cam.setupPerspective();
@@ -68,17 +68,17 @@ void testApp::draw(){
     
     // Matt
     //cam.end();
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 >>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
 =======
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
+>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6*/
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     
-<<<<<<< HEAD
-<<<<<<< HEAD
+/*<<<<<<< HEAD
+<<<<<<< HEAD*/
     if( key == 'q' || key == 'Q'){
         
         ship1.rotateCCWise = true;
@@ -99,17 +99,17 @@ void testApp::keyPressed(int key){
 
     
     
-=======
+/*=======
 >>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
 =======
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
+>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6*/
 }
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
     
-<<<<<<< HEAD
-<<<<<<< HEAD
+/*<<<<<<< HEAD
+<<<<<<< HEAD*/
     if( key == 'q' || key == 'Q'){
         
         ship1.rotateCCWise = false;
@@ -128,10 +128,10 @@ void testApp::keyReleased(int key){
     
     
 
-=======
+/*=======
 >>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
 =======
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
+>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6*/
 }
 
 //--------------------------------------------------------------
@@ -168,7 +168,7 @@ void testApp::gotMessage(ofMessage msg){
 void testApp::dragEvent(ofDragInfo dragInfo){
     
 }
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
 //--------------------------------------------------------------
 void testApp::drawWings() {
@@ -222,10 +222,10 @@ void testApp::branch( float length ) {
 }
 
 //--------------------------------------------------------------
-=======
+//=======
 
 //--------------------------------------------------------------
-void testApp::drawWings() {
+/*void testApp::drawWings() {
     
     // Draw the wings.
     ofPushMatrix();{
@@ -241,10 +241,10 @@ void testApp::drawWings() {
         branch3( 75 );
     }ofPopMatrix();
     //ofRect( pos.x- 25, pos.y, 50, 100 );
-}
+}*/
 
 //--------------------------------------------------------------
-void testApp::branch( float length ) {
+/*void testApp::branch( float length ) {
     
     // Matt--this is copied and modified from Charlie's in-class example.
     
@@ -273,10 +273,10 @@ void testApp::branch( float length ) {
     ofPopMatrix();
     
     generation--;
-}
+}*/
 
 //--------------------------------------------------------------
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
+//>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
 void testApp::branch2( float length ) {
     
     // Matt--this is copied and modified from Charlie's in-class example.
