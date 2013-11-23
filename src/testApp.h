@@ -18,10 +18,12 @@
  */
 
 #include "ofMain.h"
+#include "SpaceShip.h"
 
 class testApp : public ofBaseApp{
 
 	public:
+    
 		void setup();
 		void update();
 		void draw();
@@ -35,5 +37,7 @@ class testApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+    
+        SpaceShip ship1;
 		
 };

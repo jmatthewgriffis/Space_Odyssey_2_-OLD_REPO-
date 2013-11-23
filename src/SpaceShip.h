@@ -16,19 +16,27 @@ class SpaceShip {
     
     public:
     
-    SpaceShip(ofVec2f _pos, ofVec2f _vel, ofColor _colorPlayer, ofImage _spaceImage);
+//    SpaceShip(ofVec2f _pos, ofVec2f _vel, ofColor _colorPlayer/*, ofImage _spaceImage*/);
+    void setup(ofVec2f _pos, float _vel, ofColor _colorPlayer/*, ofImage _spaceImage*/);
     void draw();
     void update();
     
     
     //These are unique to the players
-    ofVec2f pos, vel;
+    ofVec2f pos;
+    float vel;
     ofColor colorPlayer;
     ofImage spaceImage;
     
     //Universal Variables
     float spaceShipSize;
-    float rotAngle;
-        
+    float rotAngle, rotAngleInc;
+    float size;
+    float velModifier;
+    float speed;
+    
+    bool rotateCCWise, rotateCWise, notAngled, addToSpeed, fire;
+    
+    int inc;
         
 };
