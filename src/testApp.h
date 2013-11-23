@@ -21,31 +21,6 @@
 #include "SpaceShip.h"
 
 class testApp : public ofBaseApp{
-/*<<<<<<< HEAD
-<<<<<<< HEAD*/
-
-	/*public:
-    
-		void setup();
-		void update();
-		void draw();
-
-		void keyPressed(int key);
-		void keyReleased(int key);
-		void mouseMoved(int x, int y );
-		void mouseDragged(int x, int y, int button);
-		void mousePressed(int x, int y, int button);
-		void mouseReleased(int x, int y, int button);
-		void windowResized(int w, int h);
-		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
-    
-        SpaceShip ship1;*/
-		
-/*=======
-=======
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6*/
-    
 public:
     void setup();
     void update();
@@ -76,8 +51,4 @@ public:
     
     // Mauricio
     SpaceShip ship1;
-/*<<<<<<< HEAD
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
-=======
->>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6*/
 };
