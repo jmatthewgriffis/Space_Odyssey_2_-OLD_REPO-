@@ -1,6 +1,9 @@
 #pragma once
 
 /*
+ 
+ A NOTE FROM MATT--
+ 
  M^2 Studios presents:
  
  Space Odyssey 2

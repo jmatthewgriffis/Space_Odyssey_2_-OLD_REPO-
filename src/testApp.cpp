@@ -3,6 +3,12 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
+    // Matt--maintenance
+    ofSetVerticalSync( true );
+    ofSetFrameRate( 60 );
+    ofSetCircleResolution( 100 );
+    ofBackground( 0 );
+    
 }
 
 //--------------------------------------------------------------
