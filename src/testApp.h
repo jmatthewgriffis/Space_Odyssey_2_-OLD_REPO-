@@ -36,11 +36,16 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
+    //----------NEW STUFF STARTS HERE----------
+    
     // Matt
     ofVec2f pos;
     //ofEasyCam cam;
     // For branching:
     void branch( float length );
-    float theta = 0;
+    void branch2( float length );
+    void branch3( float length );
+    void drawWings();
+    float theta = 30;
     int generation;
 };

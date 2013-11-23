@@ -32,12 +32,12 @@ void SpaceShip::draw(){
     ofPushMatrix();{
         
         ofTranslate( pos.x, pos.y);
-        ofEllipse( 0, 0, size, size);
+        //ofEllipse( 0, 0, size, size);
         
         ofPushMatrix();{
             
             ofTranslate( pos.x, pos.y);
-            ofRect( sin(rotAngle) * 50, cos( angle) * 50, 50, 50);
+            //ofRect( sin(rotAngle) * 50, cos( angle) * 50, 50, 50);
             
             
         }ofPopMatrix();
