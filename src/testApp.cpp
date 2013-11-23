@@ -141,13 +141,13 @@ void testApp::drawWings() {
         ofSetColor( 255, 0, 0 );
         ofTranslate( pos );
         ofRotate( -115+ofNoise(ofGetElapsedTimef()));
-        branch2( 75 );
+        branch2( 200 );
     }ofPopMatrix();
     ofPushMatrix();{
         ofSetColor( 255, 0, 0 );
         ofTranslate( pos );
         ofRotate( 115+ofNoise(ofGetElapsedTimef()) );
-        branch3( 75 );
+        branch3( 200 );
     }ofPopMatrix();
     //ofRect( pos.x- 25, pos.y, 50, 100 );
 }
