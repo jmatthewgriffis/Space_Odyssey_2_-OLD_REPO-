@@ -6,7 +6,7 @@
  
  M^2 Studios presents:
  
- Space Odyssey 2
+ SPACE ODYSSEY 2: MICHAEL KAHANE'S DEFECTION
  
  the follow-up to the award-winning* Space Odyssey, created by M^3 Studios** in two weeks across Spring 2013 for Major Studio 2.
  
@@ -21,6 +21,7 @@
 #include "SpaceShip.h"
 
 class testApp : public ofBaseApp{
+<<<<<<< HEAD
 
 	public:
     
@@ -40,4 +41,34 @@ class testApp : public ofBaseApp{
     
         SpaceShip ship1;
 		
+=======
+    
+public:
+    void setup();
+    void update();
+    void draw();
+    
+    void keyPressed(int key);
+    void keyReleased(int key);
+    void mouseMoved(int x, int y );
+    void mouseDragged(int x, int y, int button);
+    void mousePressed(int x, int y, int button);
+    void mouseReleased(int x, int y, int button);
+    void windowResized(int w, int h);
+    void dragEvent(ofDragInfo dragInfo);
+    void gotMessage(ofMessage msg);
+    
+    //----------NEW STUFF STARTS HERE----------
+    
+    // Matt
+    ofVec2f pos;
+    //ofEasyCam cam;
+    // For branching:
+    void branch( float length );
+    void branch2( float length );
+    void branch3( float length );
+    void drawWings();
+    float theta = 30;
+    int generation;
+>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
 };
