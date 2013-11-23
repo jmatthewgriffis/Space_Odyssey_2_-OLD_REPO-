@@ -140,6 +140,7 @@ void SpaceShip::draw(){
     
     ofSetColor( colorPlayer);
     ofPushMatrix();{
+
       //        ofTranslate( pos.x, pos.y);
         ofSetRectMode(OF_RECTMODE_CENTER);
         ofEllipse( pos.x, pos.y, size, size);
@@ -149,6 +150,7 @@ void SpaceShip::draw(){
 
             ofSetColor( 255);
             ofRect( sin(rotAngle) * 50, cos( rotAngle) * 50, 50, 50);            
+
             
         }ofPopMatrix();
         

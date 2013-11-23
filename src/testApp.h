@@ -22,6 +22,7 @@
 
 class testApp : public ofBaseApp{
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	public:
     
@@ -42,6 +43,8 @@ class testApp : public ofBaseApp{
         SpaceShip ship1;
 		
 =======
+=======
+>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
     
 public:
     void setup();
@@ -70,5 +73,8 @@ public:
     void drawWings();
     float theta = 30;
     int generation;
+<<<<<<< HEAD
+>>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
+=======
 >>>>>>> ab71cc0e191dde85b04f2c35cf37cd0dcbb682c6
 };
