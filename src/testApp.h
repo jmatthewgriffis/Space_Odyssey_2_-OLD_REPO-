@@ -8,7 +8,7 @@
  
  SPACE ODYSSEY 2: MICHAEL KAHANE'S DEFECTION
  
- the follow-up to the award-winning* Space Odyssey, created by M^3 Studios** in two weeks across Spring 2013 for Major Studio 2.
+ the follow-up to the award-winning* Space Odyssey (which was created by M^3 Studios** in two weeks across Spring 2013 for Major Studio 2 and may be played here: http://www.openprocessing.org/sketch/93227 ).
  
  M^2 Studios is Mauricio Sanchez-Duque and Matt Griffis.
  

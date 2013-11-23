@@ -9,6 +9,8 @@ void testApp::setup(){
     ofSetCircleResolution( 100 );
     ofEnableAlphaBlending();
     ofBackground( 0 );
+    //ofHideCursor(); // Doesn't work.
+    CGDisplayHideCursor(NULL); // But this does.
     
     // Mauricio
     ship1.setup(ofVec2f( ofGetWindowWidth() / 2 , ofGetWindowHeight() / 2), 2, ofColor( ofColor( 20, 20, 200)));
@@ -33,7 +35,7 @@ void testApp::update(){
 void testApp::draw(){
     
     // Mauricio
-    ship1.draw();
+    //ship1.draw();
 
     // Matt
     //cam.begin(); //
