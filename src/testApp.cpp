@@ -9,6 +9,46 @@ void testApp::setup(){
     ofSetCircleResolution( 100 );
     ofBackground( 0 );
     
+    // Matt
+    generation = 0;
+    pos = ofGetWindowSize() / 2.0;
+    //cam.setDistance(0);
+}
+
+//--------------------------------------------------------------
+void testApp::branch( float length ) {
+    
+    // Matt--this is copied and modified from Charlie's in-class example.
+    
+//    ofPushMatrix();
+    
+    ofTranslate( 100, 0 );
+    
+        ofPushMatrix();
+        ofLine( ofVec2f(0,0), ofVec2f(0, -length) );
+        ofTranslate( 0, -length );
+        
+        generation++;
+        
+        float noise = ofNoise( generation, ofGetElapsedTimef() * 0.1 );
+        
+        if( length > 2 ){
+            ofPushMatrix();{
+                ofRotate( -45 + theta + noise * 10-5 );
+                branch( length * 0.666 );
+            }ofPopMatrix();
+            
+            ofPushMatrix();{
+                ofRotate( 45 + theta - noise * 10-5 );
+                branch( length * 0.666 );
+            }ofPopMatrix();
+        }
+        
+        ofPopMatrix();
+        
+        generation--;
+        
+//    ofPopMatrix();
 }
 
 //--------------------------------------------------------------
@@ -19,6 +59,18 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 
+    // Matt
+    //cam.begin(); //
+    //cam.setupPerspective();
+    
+    ofPushMatrix();{
+        ofTranslate( ofGetWindowWidth()/2, ofGetWindowHeight() );
+        branch( 200 );
+    }ofPopMatrix();
+    
+    
+    // Matt
+    //cam.end();
 }
 
 //--------------------------------------------------------------
@@ -28,7 +80,7 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-
+    
 }
 
 //--------------------------------------------------------------
