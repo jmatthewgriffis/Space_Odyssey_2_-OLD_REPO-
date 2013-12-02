@@ -178,9 +178,20 @@ void testApp::keyPressed(int key){
                 shipList[ 3 ].fire = true;
                 break;
                 
+            { // Debug
+                
+                // Turn the galaxy and enemy on and off.
             case '1':
                 killFrameRate = !killFrameRate;
                 break;
+                
+                // Reset
+            case 'r':
+            case 'R':
+                shipList.clear();
+                setup();
+                
+            } // End debug.
         }
     } // End Matt
 }
