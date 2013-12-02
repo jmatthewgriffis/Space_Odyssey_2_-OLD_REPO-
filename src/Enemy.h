@@ -25,4 +25,8 @@ public:
     ofVec2f vel;
     int generation;
     float theta = 30;
+    
+    //Mauricio
+    float d1, d2, d3, d4, health, size;
+    
 };

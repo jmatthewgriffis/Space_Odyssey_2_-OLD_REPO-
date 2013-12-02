@@ -18,6 +18,7 @@ void Enemy::setup() {
     generation = 0;
     pos = ofGetWindowSize() / 2.0;
     //vel.set( 5, 5 );
+    
 }
 
 void Enemy::update() {
