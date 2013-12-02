@@ -41,28 +41,28 @@ void Enemy::branch( float length, float _ang1, float _ang2, float _mult, bool _t
     }
     
     ofPushMatrix();
-    ofLine( ofVec2f(0,0), ofVec2f(0, -length) );
-    ofTranslate( 0, -length );
-    
-    generation++;
-    
-    float noise = ofNoise( generation, ofGetElapsedTimef() * 0.1 );
-    
-    if( length > 2 ){
-        ofPushMatrix();{
-            ofRotate( ( _ang1 + theta + noise * 10-5 ) * _mult );
-            branch( length * 0.666, _ang1, _ang2, _mult, _trans );
-        }ofPopMatrix();
+        ofLine( ofVec2f(0,0), ofVec2f(0, -length) );
+        ofTranslate( 0, -length );
         
-        ofPushMatrix();{
-            ofRotate( ( _ang2 + theta - noise * 10-5 ) * _mult );
-            branch( length * 0.666, _ang1, _ang2, _mult, _trans );
-        }ofPopMatrix();
-    }
+//        generation++;
+    
+        float noise = ofNoise(ofGetElapsedTimef() * 0.1 );
+        
+        if( length > 2 ){
+            ofPushMatrix();{
+                ofRotate( ( _ang1 + theta + noise * 10-5 ) * _mult );
+                branch( length * 0.666, _ang1, _ang2, _mult, _trans );
+            }ofPopMatrix();
+            
+            ofPushMatrix();{
+                ofRotate( ( _ang2 + theta - noise * 10-5 ) * _mult );
+                branch( length * 0.666, _ang1, _ang2, _mult, _trans );
+            }ofPopMatrix();
+        }
     
     ofPopMatrix();
     
-    generation--;
+//    generation--;
 }
 
 void Enemy::drawWings() {
@@ -74,12 +74,12 @@ void Enemy::drawWings() {
         ofSetColor( 255, 0, 0 );
         ofTranslate( pos );
         ofRotate( -115+ofNoise(ofGetElapsedTimef()));
-        branch( 200, -10, 50, -1 );
+        branch( 150, -10, 50, -1 );
     }ofPopMatrix();
     ofPushMatrix();{
         ofSetColor( 255, 0, 0 );
         ofTranslate( pos );
         ofRotate( 115+ofNoise(ofGetElapsedTimef()) );
-        branch( 200, -10, 50 );
+        branch( 150, -10, 50 );
     }ofPopMatrix();
 }

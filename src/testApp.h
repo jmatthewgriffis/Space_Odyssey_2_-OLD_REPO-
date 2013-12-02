@@ -54,4 +54,6 @@ public:
     
     // Mauricio
     SpaceShip ship1;
+    
+    ofFbo enemyFbo;
 };

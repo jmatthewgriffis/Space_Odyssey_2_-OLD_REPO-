@@ -21,6 +21,7 @@ void testApp::setup(){
     
     { // Mauricio
         ship1.setup(ofVec2f( ofGetWindowWidth() / 2 , ofGetWindowHeight() / 2), 2, ofColor( ofColor( 20, 20, 200)));
+//        enemyFbo.allocate( 0 , 0 );
     }
 }
 
@@ -39,12 +40,18 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    
-    { // Matt
-        //cam.begin(); //
-        //cam.setupPerspective();
-        if ( killFrameRate ) drawGalaxy();
-        if ( killFrameRate ) metroid.draw();
+    {//Mauricio
+//    enemyFbo.begin();
+//        ofSetColor(255, 255, 255);
+//        ofClear(255, 255, 255, 0);
+        { // Matt
+            //cam.begin(); //
+            //cam.setupPerspective();
+            if ( killFrameRate ) drawGalaxy();
+            if ( killFrameRate ) metroid.draw();
+        }
+//    enemyFbo.end();
+    enemyFbo.draw( ofGetWindowWidth() , ofGetWindowHeight());
     }
     
     { // Mauricio
