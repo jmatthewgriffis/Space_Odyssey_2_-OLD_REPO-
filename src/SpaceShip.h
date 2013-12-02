@@ -8,6 +8,7 @@
 
 //Mauricio: I'm going to start migrating the base code from processing make sure that it works in our spaceships and include some new physics.
 
+// Note from Matt: I wrote the original code for the ship in the Processing game. Mauricio ported it to this oF project, and now I'm improving it.
 
 #pragma once
 #include "ofMain.h"
@@ -15,6 +16,8 @@
 class SpaceShip {
     
     public:
+    
+    // Mauricio
     
 //    SpaceShip(ofVec2f _pos, ofVec2f _vel, ofColor _colorPlayer/*, ofImage _spaceImage*/);
     void setup(ofVec2f _pos, float _vel, ofColor _colorPlayer/*, ofImage _spaceImage*/);
@@ -24,7 +27,7 @@ class SpaceShip {
     
     //These are unique to the players
     ofVec2f pos;
-    float vel;
+    //float vel;
     ofColor colorPlayer;
     ofImage spaceImage;
     
@@ -38,5 +41,11 @@ class SpaceShip {
     bool rotateCCWise, rotateCWise, notAngled, addToSpeed, fire;
     
     int inc;
-        
+    
+    //---------------------------
+    
+    // Matt
+    
+    void applyForce( float _force, float _ang );
+    ofVec2f vel, acc;
 };
