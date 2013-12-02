@@ -20,7 +20,7 @@ class SpaceShip {
     // Mauricio
     
 //    SpaceShip(ofVec2f _pos, ofVec2f _vel, ofColor _colorPlayer/*, ofImage _spaceImage*/);
-    void setup(ofVec2f _pos, float _vel, ofColor _colorPlayer/*, ofImage _spaceImage*/);
+    void setup(ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*/);
     void draw();
     void update();
     

@@ -51,9 +51,10 @@ public:
     float theta = 30;
     int generation;
     Enemy metroid;
+    vector< SpaceShip > shipList;
     
     // Mauricio
-    SpaceShip ship1;
+    //SpaceShip ship1;
     
     ofFbo enemyFbo;
 };

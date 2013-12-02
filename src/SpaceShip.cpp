@@ -9,7 +9,7 @@
 #include "SpaceShip.h"
 
 
-void SpaceShip::setup(ofVec2f _pos, float _vel, ofColor _colorPlayer/*, ofImage _spaceImage*/){
+void SpaceShip::setup(ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*/){
     
     { // Mauricio
         pos = _pos;
@@ -21,6 +21,12 @@ void SpaceShip::setup(ofVec2f _pos, float _vel, ofColor _colorPlayer/*, ofImage 
         size = 150;
         inc = 20;
         rotAngleInc = 1 * 0.15;
+    }
+    
+    { // Matt
+        vel.set( 0 );
+        acc.set( 0 );
+        rotateCCWise = rotateCWise = notAngled = addToSpeed = fire = false;
     }
 }
 
