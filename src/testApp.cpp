@@ -17,8 +17,8 @@ void testApp::setup(){
     
     // Matt
     generation = 0;
-    pos = ofGetWindowSize() / 2.0;
     //cam.setDistance(0);
+    metroid.setup();
 }
 
 //--------------------------------------------------------------
@@ -26,9 +26,9 @@ void testApp::update(){
     
     // Mauricio
     ship1.update();
-
+    
     // Matt
-    pos.set( mouseX, mouseY );
+    metroid.update();
 }
 
 //--------------------------------------------------------------
@@ -47,10 +47,9 @@ void testApp::draw(){
         branch( 200 );
     }ofPopMatrix();
     
-    drawWings();
-    
     
     // Matt
+    metroid.draw();
     //cam.end();
 }
 
@@ -132,27 +131,6 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 }
 
 //--------------------------------------------------------------
-void testApp::drawWings() {
-    
-    // Matt--this is copied and modified from Charlie's in-class example.
-    
-    // Draw the wings.
-    ofPushMatrix();{
-        ofSetColor( 255, 0, 0 );
-        ofTranslate( pos );
-        ofRotate( -115+ofNoise(ofGetElapsedTimef()));
-        branch2( 200 );
-    }ofPopMatrix();
-    ofPushMatrix();{
-        ofSetColor( 255, 0, 0 );
-        ofTranslate( pos );
-        ofRotate( 115+ofNoise(ofGetElapsedTimef()) );
-        branch3( 200 );
-    }ofPopMatrix();
-    //ofRect( pos.x- 25, pos.y, 50, 100 );
-}
-
-//--------------------------------------------------------------
 void testApp::branch( float length ) {
     
     // Matt--this is copied and modified from Charlie's in-class example.
@@ -176,70 +154,6 @@ void testApp::branch( float length ) {
         ofPushMatrix();{
             ofRotate( 45 + theta - noise * 10-5 );
             branch( length * 0.666 );
-        }ofPopMatrix();
-    }
-    
-    ofPopMatrix();
-    
-    generation--;
-}
-
-//--------------------------------------------------------------
-void testApp::branch2( float length ) {
-    
-    // Matt--this is copied and modified from Charlie's in-class example.
-    
-    //ofTranslate( 100, 0 );
-    
-    ofPushMatrix();
-    ofLine( ofVec2f(0,0), ofVec2f(0, -length) );
-    ofTranslate( 0, -length );
-    
-    generation++;
-    
-    float noise = ofNoise( generation, ofGetElapsedTimef() * 0.1 );
-    
-    if( length > 2 ){
-        ofPushMatrix();{
-            ofRotate( -( -10 + theta + noise * 10-5 ) );
-            branch2( length * 0.666 );
-        }ofPopMatrix();
-        
-        ofPushMatrix();{
-            ofRotate( -( 50 + theta - noise * 10-5 ) );
-            branch2( length * 0.666 );
-        }ofPopMatrix();
-    }
-    
-    ofPopMatrix();
-    
-    generation--;
-}
-
-//--------------------------------------------------------------
-void testApp::branch3( float length ) {
-    
-    // Matt--this is copied and modified from Charlie's in-class example.
-    
-    //ofTranslate( 100, 0 );
-    
-    ofPushMatrix();
-    ofLine( ofVec2f(0,0), ofVec2f(0, -length) );
-    ofTranslate( 0, -length );
-    
-    generation++;
-    
-    float noise = ofNoise( generation, ofGetElapsedTimef() * 0.1 );
-    
-    if( length > 2 ){
-        ofPushMatrix();{
-            ofRotate( -10 + theta + noise * 10-5 );
-            branch3( length * 0.666 );
-        }ofPopMatrix();
-        
-        ofPushMatrix();{
-            ofRotate( 50 + theta - noise * 10-5 );
-            branch3( length * 0.666 );
         }ofPopMatrix();
     }
     
