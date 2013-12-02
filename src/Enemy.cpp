@@ -14,16 +14,21 @@ Enemy::Enemy() {
 
 void Enemy::setup() {
     
+    // Matt
     generation = 0;
     pos = ofGetWindowSize() / 2.0;
+    //vel.set( 5, 5 );
 }
 
 void Enemy::update() {
     
+    // Matt
+    pos += vel;
 }
 
 void Enemy::draw() {
 
+    // Matt
     drawWings();
 }
 

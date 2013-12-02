@@ -42,6 +42,7 @@ public:
     //----------NEW STUFF STARTS HERE----------
     
     // Matt
+    bool killFrameRate;
     ofVec2f pos;
     //ofEasyCam cam;
     void drawGalaxy();
