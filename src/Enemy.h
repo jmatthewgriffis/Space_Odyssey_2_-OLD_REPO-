@@ -16,8 +16,7 @@ public:
     void setup();
     void update();
     void draw();
-    void branch2( float length );
-    void branch3( float length );
+    void branch( float length, float _ang1, float _ang2, float _mult = 1, bool _trans = false );
     void drawWings();
     
     ofVec2f pos;

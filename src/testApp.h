@@ -21,6 +21,8 @@
 #include "SpaceShip.h"
 #include "Enemy.h"
 
+// Question for Charlie: how to pass a function into a function.
+
 class testApp : public ofBaseApp{
 public:
     void setup();
@@ -42,8 +44,9 @@ public:
     // Matt
     ofVec2f pos;
     //ofEasyCam cam;
+    void drawGalaxy();
     // For branching:
-    void branch( float length );
+    void branch( float length, float _ang1, float _ang2, float _mult = 1, bool _trans = false );
     float theta = 30;
     int generation;
     Enemy metroid;

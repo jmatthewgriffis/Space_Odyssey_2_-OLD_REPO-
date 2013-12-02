@@ -27,43 +27,14 @@ void Enemy::draw() {
     drawWings();
 }
 
-void Enemy::branch2( float length ) {
+void Enemy::branch( float length, float _ang1, float _ang2, float _mult, bool _trans ) {
     
-    // Matt--this is copied and modified from Charlie's in-class example.
+    // Matt--this is copied and heavily modified from Charlie's in-class example.
     
-    //ofTranslate( 100, 0 );
-    
-    ofPushMatrix();
-    ofLine( ofVec2f(0,0), ofVec2f(0, -length) );
-    ofTranslate( 0, -length );
-    
-    generation++;
-    
-    float noise = ofNoise( generation, ofGetElapsedTimef() * 0.1 );
-    
-    if( length > 2 ){
-        ofPushMatrix();{
-            ofRotate( -( -10 + theta + noise * 10-5 ) );
-            branch2( length * 0.666 );
-        }ofPopMatrix();
-        
-        ofPushMatrix();{
-            ofRotate( -( 50 + theta - noise * 10-5 ) );
-            branch2( length * 0.666 );
-        }ofPopMatrix();
+    if ( _trans ) {
+        ofTranslate( 100, 0 );
     }
     
-    ofPopMatrix();
-    
-    generation--;
-}
-
-void Enemy::branch3( float length ) {
-    
-    // Matt--this is copied and modified from Charlie's in-class example.
-    
-    //ofTranslate( 100, 0 );
-    
     ofPushMatrix();
     ofLine( ofVec2f(0,0), ofVec2f(0, -length) );
     ofTranslate( 0, -length );
@@ -74,13 +45,13 @@ void Enemy::branch3( float length ) {
     
     if( length > 2 ){
         ofPushMatrix();{
-            ofRotate( -10 + theta + noise * 10-5 );
-            branch3( length * 0.666 );
+            ofRotate( ( _ang1 + theta + noise * 10-5 ) * _mult );
+            branch( length * 0.666, _ang1, _ang2, _mult, _trans );
         }ofPopMatrix();
         
         ofPushMatrix();{
-            ofRotate( 50 + theta - noise * 10-5 );
-            branch3( length * 0.666 );
+            ofRotate( ( _ang2 + theta - noise * 10-5 ) * _mult );
+            branch( length * 0.666, _ang1, _ang2, _mult, _trans );
         }ofPopMatrix();
     }
     
@@ -91,19 +62,19 @@ void Enemy::branch3( float length ) {
 
 void Enemy::drawWings() {
     
-    // Matt--this is copied and modified from Charlie's in-class example.
+    // Matt--this is copied and heavily modified from Charlie's in-class example.
     
     // Draw the wings.
     ofPushMatrix();{
         ofSetColor( 255, 0, 0 );
         ofTranslate( pos );
         ofRotate( -115+ofNoise(ofGetElapsedTimef()));
-        branch2( 200 );
+        branch( 200, -10, 50, -1 );
     }ofPopMatrix();
     ofPushMatrix();{
         ofSetColor( 255, 0, 0 );
         ofTranslate( pos );
         ofRotate( 115+ofNoise(ofGetElapsedTimef()) );
-        branch3( 200 );
+        branch( 200, -10, 50 );
     }ofPopMatrix();
 }

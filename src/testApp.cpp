@@ -35,21 +35,13 @@ void testApp::update(){
 void testApp::draw(){
     
     // Mauricio
-    //ship1.draw();
+    ship1.draw();
 
     // Matt
     //cam.begin(); //
     //cam.setupPerspective();
-    // Draw the galaxy.
-    ofPushMatrix();{
-        ofSetColor( 255 );
-        ofTranslate( ofGetWindowWidth()/2, ofGetWindowHeight() );
-        branch( 200 );
-    }ofPopMatrix();
-    
-    
-    // Matt
-    metroid.draw();
+    //drawGalaxy();
+    //metroid.draw();
     //cam.end();
 }
 
@@ -131,7 +123,7 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 }
 
 //--------------------------------------------------------------
-void testApp::branch( float length ) {
+void testApp::branch( float length, float _ang1, float _ang2, float _mult, bool _trans ) {
     
     // Matt--this is copied and modified from Charlie's in-class example.
     
@@ -147,17 +139,30 @@ void testApp::branch( float length ) {
     
     if( length > 2 ){
         ofPushMatrix();{
-            ofRotate( -45 + theta + noise * 10-5 );
-            branch( length * 0.666 );
+            ofRotate( ( _ang1 + theta + noise * 10-5 ) * _mult );
+            branch( length * 0.666, _ang1, _ang2, _mult, _trans );
         }ofPopMatrix();
         
         ofPushMatrix();{
-            ofRotate( 45 + theta - noise * 10-5 );
-            branch( length * 0.666 );
+            ofRotate( ( _ang2 + theta - noise * 10-5 ) * _mult );
+            branch( length * 0.666, _ang1, _ang2, _mult, _trans );
         }ofPopMatrix();
     }
     
     ofPopMatrix();
     
     generation--;
+}
+
+//--------------------------------------------------------------
+void testApp::drawGalaxy() {
+    
+    { // Matt
+        // Draw the galaxy.
+        ofPushMatrix();{
+            ofSetColor( 255 );
+            ofTranslate( ofGetWindowWidth()/2, ofGetWindowHeight() );
+            branch( 200, -45, 45, 1, true );
+        }ofPopMatrix();
+    }
 }
