@@ -166,9 +166,11 @@ void testApp::keyPressed(int key){
             case 'W':
             {
                 shipList[ 0 ].fire = true;
-                float fireAng = shipList[ 0 ].rotAngle - PI;
-                Bullet tmp( shipList[ 0 ].pos, fireAng );
-                bulletList.push_back( tmp );
+                //if ( shipList[ 0 ].shootBullet ) {
+                    float fireAng = shipList[ 0 ].rotAngle - PI;
+                    Bullet tmp( shipList[ 0 ].pos, fireAng );
+                    bulletList.push_back( tmp );
+                //}
                 break;
             }
                 

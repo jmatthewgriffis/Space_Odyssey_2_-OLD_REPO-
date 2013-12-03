@@ -26,7 +26,8 @@ void SpaceShip::setup(ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*
     { // Matt
         vel.set( 0 );
         acc.set( 0 );
-        rotateCCWise = rotateCWise = notAngled = addToSpeed = fire = false;
+        rotateCCWise = rotateCWise = notAngled = addToSpeed = fire = shootBullet = false;
+        fireTimer = 0;
     }
 }
 
@@ -144,8 +145,23 @@ void SpaceShip::update(){
     
     { // Matt
         
+        // Player has to tap the fire button twice within a specified timeframe to fire a bullet.
+        if ( fireTimer > 0 ) {
+            fireTimer--;
+        }
+        
+        // Reset the bool.
+        shootBullet = false;
+        
         if ( fire ) {
+            // Accelerate.
             applyForce( 0.3, rotAngle );
+            // Prep for firing.
+            if ( fireTimer == 0 ) {
+                fireTimer = 60;
+            } else {
+                shootBullet = true;
+            }
         }
         
         vel += acc;
