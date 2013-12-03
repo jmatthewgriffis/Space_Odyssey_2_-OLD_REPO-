@@ -17,20 +17,22 @@ void testApp::setup(){
         //cam.setDistance(0);
         metroid.setup();
         
-        float offset = 100;
-        for ( int i = 0; i < 4; i++ ) {
-            SpaceShip tmp;
-            tmp.setup( ofVec2f( offset, offset ), ofColor( ofColor( 20, 20, 200 ) ) );
-            shipList.push_back( tmp );
+        { // Make the ships.
+            float offset = 100;
+            for ( int i = 0; i < 4; i++ ) {
+                SpaceShip tmp;
+                tmp.setup( ofVec2f( offset, offset ), ofColor( ofColor( 20, 20, 200 ) ) );
+                shipList.push_back( tmp );
+            }
+            // Individual pos
+            shipList[ 1 ].pos.set( ofGetWindowWidth() - offset, offset );
+            shipList[ 2 ].pos.set( offset, ofGetWindowHeight() - offset );
+            shipList[ 3 ].pos.set( ofGetWindowWidth() - offset, ofGetWindowHeight() - offset );
+            // Individual color
+            shipList[ 1 ].colorPlayer = ofColor( 200, 20, 20 );
+            shipList[ 2 ].colorPlayer = ofColor( 100, 80, 20 );
+            shipList[ 3 ].colorPlayer = ofColor( 0, 255, 20 );
         }
-        // Individual pos
-        shipList[ 1 ].pos.set( ofGetWindowWidth() - offset, offset );
-        shipList[ 2 ].pos.set( offset, ofGetWindowHeight() - offset );
-        shipList[ 3 ].pos.set( ofGetWindowWidth() - offset, ofGetWindowHeight() - offset );
-        // Individual color
-        shipList[ 1 ].colorPlayer = ofColor( 200, 20, 20 );
-        shipList[ 2 ].colorPlayer = ofColor( 100, 80, 20 );
-        shipList[ 3 ].colorPlayer = ofColor( 0, 255, 20 );
     }
     
     
@@ -183,8 +185,13 @@ void testApp::keyPressed(int key){
                 
             case 'k':
             case 'K':
+            {
                 shipList[ 1 ].fire = true;
+                float fireAng = shipList[ 1 ].rotAngle - PI;
+                Bullet tmp( shipList[ 1 ].pos, fireAng );
+                bulletList.push_back( tmp );
                 break;
+            }
                 
                 // Player Three
             case 'v':
@@ -199,8 +206,13 @@ void testApp::keyPressed(int key){
                 
             case 'b':
             case 'B':
+            {
                 shipList[ 2 ].fire = true;
+                float fireAng = shipList[ 2 ].rotAngle - PI;
+                Bullet tmp( shipList[ 2 ].pos, fireAng );
+                bulletList.push_back( tmp );
                 break;
+            }
                 
                 // Player Four
             case OF_KEY_LEFT:
@@ -212,8 +224,13 @@ void testApp::keyPressed(int key){
                 break;
                 
             case OF_KEY_DOWN:
+            {
                 shipList[ 3 ].fire = true;
+                float fireAng = shipList[ 3 ].rotAngle - PI;
+                Bullet tmp( shipList[ 3 ].pos, fireAng );
+                bulletList.push_back( tmp );
                 break;
+            }
                 
             { // Debug
                 
