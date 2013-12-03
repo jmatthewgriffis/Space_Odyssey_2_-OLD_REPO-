@@ -64,11 +64,27 @@ void testApp::update(){
         
         for ( int i = 0; i < shipList.size(); i++ ) {
             shipList[ i ].update();
+            // Handle firing.
+            if ( shipList[ i ].bFiring ) {
+                if ( shipList[ i ].firePacer == 0 ) {
+                    float fireAng = shipList[ i ].rotAngle - PI;
+                    Bullet tmp( shipList[ i ].pos, fireAng );
+                    bulletList.push_back( tmp );
+                    shipList[ i ].firePacer = shipList[ i ].pacerMax;
+                }
+            }
         }
         
         for ( int i = 0; i < bulletList.size(); i++ ) {
             bulletList[ i ].update();
         }
+        
+        // AWESOME, come back to this later.
+//        if ( shipList[ 0 ].shootBullet && shipList[ 0 ].allowAction ) {
+//            float fireAng = shipList[ 0 ].rotAngle - PI;
+//            Bullet tmp( shipList[ 0 ].pos, fireAng );
+//            bulletList.push_back( tmp );
+//        }
     }
     
     
@@ -163,11 +179,6 @@ void testApp::keyPressed(int key){
             case 'W':
             {
                 shipList[ 0 ].fire = true;
-                //if ( shipList[ 0 ].shootBullet ) {
-                    float fireAng = shipList[ 0 ].rotAngle - PI;
-                    Bullet tmp( shipList[ 0 ].pos, fireAng );
-                    bulletList.push_back( tmp );
-                //}
                 break;
             }
                 
@@ -186,9 +197,6 @@ void testApp::keyPressed(int key){
             case 'K':
             {
                 shipList[ 1 ].fire = true;
-                float fireAng = shipList[ 1 ].rotAngle - PI;
-                Bullet tmp( shipList[ 1 ].pos, fireAng );
-                bulletList.push_back( tmp );
                 break;
             }
                 
@@ -207,9 +215,6 @@ void testApp::keyPressed(int key){
             case 'B':
             {
                 shipList[ 2 ].fire = true;
-                float fireAng = shipList[ 2 ].rotAngle - PI;
-                Bullet tmp( shipList[ 2 ].pos, fireAng );
-                bulletList.push_back( tmp );
                 break;
             }
                 
@@ -225,9 +230,6 @@ void testApp::keyPressed(int key){
             case OF_KEY_DOWN:
             {
                 shipList[ 3 ].fire = true;
-                float fireAng = shipList[ 3 ].rotAngle - PI;
-                Bullet tmp( shipList[ 3 ].pos, fireAng );
-                bulletList.push_back( tmp );
                 break;
             }
                 

@@ -26,8 +26,11 @@ void SpaceShip::setup(ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*
     { // Matt
         vel.set( 0 );
         acc.set( 0 );
-        rotateCCWise = rotateCWise = notAngled = addToSpeed = fire = shootBullet = false;
-        fireTimer = 0;
+        rotateCCWise = rotateCWise = notAngled = addToSpeed = fire = bReadyToFire = bFiring = false;
+        allowAction = true;
+        fireTimer = firePacer = 0;
+        timerMax = 30;
+        pacerMax = 15;
     }
 }
 
@@ -147,22 +150,40 @@ void SpaceShip::update(){
         
         // Player has to tap the fire button twice within a specified timeframe to fire a bullet.
         if ( fireTimer > 0 ) {
+            bReadyToFire = true;
             fireTimer--;
+        } else {
+            bReadyToFire = false;
+        }
+        // Control fire rate.
+        if ( firePacer > 0 ) {
+            firePacer--;
         }
         
         // Reset the bool.
-        shootBullet = false;
+        //shootBullet = false;
         
         if ( fire ) {
             // Accelerate.
             applyForce( 0.3, rotAngle );
-            // Prep for firing.
-            if ( fireTimer == 0 ) {
-                fireTimer = 60;
-            } else {
-                cout<<"yes!"<<endl;
-                shootBullet = true;
+            
+            if ( allowAction ) {
+                // Prep for firing.
+                if ( fireTimer == 0 ) {
+                    fireTimer = timerMax;
+                    //bFiring = true;
+                    //allowAction = false;
+                } else {
+                    bFiring = true;
+                    fireTimer = 0;
+                    //cout<<"yes!"<<endl;
+                }
+                allowAction = false;
             }
+        } else {
+            bFiring = false;
+            firePacer = 0;
+            allowAction = true;
         }
         
         vel += acc;
@@ -177,7 +198,7 @@ void SpaceShip::update(){
 
 void SpaceShip::draw(){
     
-    if ( fireTimer > 0 ) cout<<fireTimer<<endl;
+    //if ( fireTimer > 0 ) cout<<fireTimer<<endl;
     
     { // Mauricio
         ofSetColor( colorPlayer);
