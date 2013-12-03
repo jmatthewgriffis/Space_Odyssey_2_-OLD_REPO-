@@ -41,6 +41,15 @@ void testApp::setup(){
 }
 
 //--------------------------------------------------------------
+bool bShouldIErase( Bullet &a ){
+    
+    // Note from Matt: Zach Lieberman showed me this method to remove an element from a vector. We create a boolean function, feed it a class, and pass a reference label that we make up (in this case 'a') so we can refer to the applicable object. Then we check for a certain condition which if met returns a boolean value of 'true.' Otherwise it returns 'false.'
+    
+    if ( a.bDestroyMe ) return true;
+    else return false;
+}
+
+//--------------------------------------------------------------
 void testApp::update(){
     
     { // Mauricio
@@ -54,11 +63,29 @@ void testApp::update(){
         for ( int i = 0; i < shipList.size(); i++ ) {
             shipList[ i ].update();
         }
+        
+        for ( int i = 0; i < bulletList.size(); i++ ) {
+            bulletList[ i ].update();
+        }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    // Note from Matt: Following up the boolean function we created above, this oF function sorts the vector according to the values of the booleans and then removes any with a 'true' value:
+    ofRemove( bulletList, bShouldIErase );
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    
+    // Matt
+    //cout<<bulletList.size()<<endl;
+    
     {//Mauricio
         //    enemyFbo.begin();
         //        ofSetColor(255, 255, 255);
@@ -81,6 +108,11 @@ void testApp::draw(){
         for ( int i = 0; i < shipList.size(); i++ ) {
             shipList[ i ].draw();
         }
+        
+        for ( int i = 0; i < bulletList.size(); i++ ) {
+            bulletList[ i ].draw();
+        }
+        
         //cam.end();
     }
 }
@@ -130,8 +162,13 @@ void testApp::keyPressed(int key){
                 
             case 'w':
             case 'W':
+            {
                 shipList[ 0 ].fire = true;
+                float fireAng = shipList[ 0 ].rotAngle - PI;
+                Bullet tmp( shipList[ 0 ].pos, fireAng );
+                bulletList.push_back( tmp );
                 break;
+            }
                 
                 // Player Two
             case 'j':
@@ -190,7 +227,7 @@ void testApp::keyPressed(int key){
             case 'R':
                 shipList.clear();
                 setup();
-                
+                break;
             } // End debug.
         }
     } // End Matt

@@ -53,6 +53,7 @@ public:
     int generation;
     Enemy metroid;
     vector< SpaceShip > shipList;
+    vector< Bullet > bulletList;
     
     // Mauricio
     //SpaceShip ship1;

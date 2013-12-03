@@ -8,18 +8,33 @@
 
 #include "Bullet.h"
 
-Bullet::Bullet() {
+Bullet::Bullet( ofVec2f _pos, float _ang ) {
     
-}
-
-void Bullet::setup() {
+    bDestroyMe = false;
     
+    pos = _pos;
+    
+    float fVel = 5;
+    vel.x = sin( _ang ) * fVel;
+    vel.y = cos( _ang ) * fVel;
 }
 
 void Bullet::update() {
     
+    pos += vel;
+    
+    // Mark the bullet for destruction when it goes offscreen.
+    float offset = 50; // How far offscreen can the bullet get?
+    if ( pos.x > ofGetWindowWidth() + offset
+        || pos.x < -offset
+        || pos.y > ofGetWindowHeight() + offset
+        || pos.y < -offset ) {
+        bDestroyMe = true;
+    }
 }
 
 void Bullet::draw() {
     
+    ofSetColor( 255 );
+    ofCircle( pos, 10 );
 }

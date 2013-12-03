@@ -13,8 +13,11 @@
 
 class Bullet {
 public:
-    Bullet();
-    void setup();
+    Bullet( ofVec2f _pos, float _ang );
     void update();
     void draw();
+    
+    ofVec2f pos, vel;
+    
+    bool bDestroyMe;
 };
