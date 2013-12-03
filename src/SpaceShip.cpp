@@ -31,6 +31,7 @@ void SpaceShip::setup(ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*
         fireTimer = firePacer = 0;
         timerMax = 30;
         pacerMax = 15;
+        boost = 0.3;
     }
 }
 
@@ -165,7 +166,7 @@ void SpaceShip::update(){
         
         if ( fire ) {
             // Accelerate.
-            applyForce( 0.3, rotAngle );
+            applyForce( boost, rotAngle );
             
             if ( allowAction ) {
                 // Prep for firing.

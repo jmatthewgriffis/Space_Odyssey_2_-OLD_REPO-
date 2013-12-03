@@ -14,7 +14,7 @@ Bullet::Bullet( ofVec2f _pos, float _ang ) {
     
     pos = _pos;
     
-    float fVel = 10;
+    float fVel = 15;
     vel.x = sin( _ang ) * fVel;
     vel.y = cos( _ang ) * fVel;
 }
