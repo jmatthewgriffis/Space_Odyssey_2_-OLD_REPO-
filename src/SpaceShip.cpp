@@ -160,6 +160,7 @@ void SpaceShip::update(){
             if ( fireTimer == 0 ) {
                 fireTimer = 60;
             } else {
+                cout<<"yes!"<<endl;
                 shootBullet = true;
             }
         }
@@ -176,7 +177,7 @@ void SpaceShip::update(){
 
 void SpaceShip::draw(){
     
-    cout<<fireTimer<<endl;
+    if ( fireTimer > 0 ) cout<<fireTimer<<endl;
     
     { // Mauricio
         ofSetColor( colorPlayer);
