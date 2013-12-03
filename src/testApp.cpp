@@ -60,7 +60,7 @@ void testApp::update(){
     
     
     { // Matt
-        metroid.update();
+        metroid.update(shipList);
         
         for ( int i = 0; i < shipList.size(); i++ ) {
             shipList[ i ].update();

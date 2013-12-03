@@ -17,7 +17,7 @@ void Enemy::setup() {
     // Matt
     generation = 0;
     pos = ofGetWindowSize() / 2.0;
-    //vel.set( 5, 5 );
+    vel.set( ofRandom(-0.5, 0.5));
     attack = true;
     
 }
@@ -74,15 +74,16 @@ void Enemy::update(vector <SpaceShip> _tmp){
     
     attackCounter++;
     
-    if( attackCounter > 300 && attackCounter < 500){
+    if( attackCounter > 200 && attackCounter < 400){
         attack = true;
     } else {
         attack = false;
     }
     
-    if( attackCounter > 1000){
+    if( attackCounter > 500){
         
         attackCounter = 0;
+        vel.set( ofRandom( -1, 1));
     }
     
 }
