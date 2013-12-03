@@ -75,9 +75,6 @@ void testApp::update(){
     
     
     
-    
-    
-    
     // Note from Matt: Following up the boolean function we created above, this oF function sorts the vector according to the values of the booleans and then removes any with a 'true' value:
     ofRemove( bulletList, bShouldIErase );
 }
