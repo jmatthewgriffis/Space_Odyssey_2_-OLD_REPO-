@@ -176,6 +176,8 @@ void SpaceShip::update(){
 
 void SpaceShip::draw(){
     
+    cout<<fireTimer<<endl;
+    
     { // Mauricio
         ofSetColor( colorPlayer);
         ofPushMatrix();{
