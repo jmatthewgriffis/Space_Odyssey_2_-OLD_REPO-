@@ -20,6 +20,7 @@
 #include "ofMain.h"
 #include "SpaceShip.h"
 #include "Enemy.h"
+#include "Bullet.h"
 
 // Question for Charlie: how to pass a function into a function.
 

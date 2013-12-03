@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6763661518403CCA008A5BE0 /* SpaceShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6763661318403CCA008A5BE0 /* SpaceShip.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		CD087AFE184E309400FB3B5E /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD087AFC184E309400FB3B5E /* Bullet.cpp */; };
 		CD7846DB184C330400D7E1A1 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD7846D9184C330400D7E1A1 /* Enemy.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -65,6 +66,8 @@
 		6763661318403CCA008A5BE0 /* SpaceShip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpaceShip.cpp; sourceTree = "<group>"; };
 		6763661418403CCA008A5BE0 /* SpaceShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceShip.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
+		CD087AFC184E309400FB3B5E /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
+		CD087AFD184E309400FB3B5E /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
 		CD7846D9184C330400D7E1A1 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
 		CD7846DA184C330400D7E1A1 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -197,6 +200,8 @@
 				6763661418403CCA008A5BE0 /* SpaceShip.h */,
 				CD7846D9184C330400D7E1A1 /* Enemy.cpp */,
 				CD7846DA184C330400D7E1A1 /* Enemy.h */,
+				CD087AFC184E309400FB3B5E /* Bullet.cpp */,
+				CD087AFD184E309400FB3B5E /* Bullet.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -297,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD087AFE184E309400FB3B5E /* Bullet.cpp in Sources */,
 				CD7846DB184C330400D7E1A1 /* Enemy.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,

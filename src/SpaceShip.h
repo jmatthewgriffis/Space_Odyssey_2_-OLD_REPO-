@@ -12,6 +12,7 @@
 
 #pragma once
 #include "ofMain.h"
+#include "Bullet.h"
 
 class SpaceShip {
     
