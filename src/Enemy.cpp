@@ -18,17 +18,77 @@ void Enemy::setup() {
     generation = 0;
     pos = ofGetWindowSize() / 2.0;
     //vel.set( 5, 5 );
+    attack = true;
     
 }
 
-void Enemy::update() {
+void Enemy::update(vector <SpaceShip> _tmp){
     
     // Matt
     pos += vel;
+    
+    //Mauricio
+        
+        d[0] = pos.distance(_tmp[0].pos);
+        d[1] = pos.distance(_tmp[1].pos);
+        d[2] = pos.distance(_tmp[2].pos);
+        d[3] = pos.distance(_tmp[3].pos);
+    
+    //This will trigger the attack toward one of the enmies
+        if( attack){
+            
+            if( d[0] < d[1] && d[0] < d[2] && d[0] < d[3]){
+                
+                pos.x = ofLerp(pos.x, _tmp[0].pos.x, 0.02);
+                pos.y = ofLerp(pos.y, _tmp[0].pos.y, 0.02);
+                
+            }
+            
+            if( d[1] < d[0] && d[1] < d[2] && d[1] < d[3]){
+                
+                pos.x = ofLerp( pos.x, _tmp[1].pos.x, 0.02);
+                pos.y = ofLerp( pos.x, _tmp[1].pos.y, 0.02);
+            }
+            
+            if( d[2] < d[0] && d[2] < d[1] && d[2] < d[3]){
+                
+                pos.x = ofLerp( pos.x, _tmp[2].pos.x, 0.02);
+                pos.y = ofLerp( pos.y, _tmp[2].pos.x, 0.02);
+            }
+            if( d[3] < d[0] && d[3] < d[1] && d[3] < d[2]){
+                pos.x = ofLerp( pos.x, _tmp[3].pos.x, 0.02);
+                pos.y = ofLerp( pos.y, _tmp[3].pos.x, 0.02);
+            
+            }
+        }
+    
+    if ( pos.x < 0 || pos.x > ofGetWindowWidth()){
+        
+        vel.x *= -1;
+    }
+    
+    if( pos.y < 0 || pos.y > ofGetWindowHeight()){
+        
+        vel.y *= -1;
+    }
+    
+    attackCounter++;
+    
+    if( attackCounter > 300 && attackCounter < 500){
+        attack = true;
+    } else {
+        attack = false;
+    }
+    
+    if( attackCounter > 1000){
+        
+        attackCounter = 0;
+    }
+    
 }
 
-void Enemy::draw() {
-
+void Enemy::draw(){
+    
     // Matt
     drawWings();
 }
@@ -42,28 +102,28 @@ void Enemy::branch( float length, float _ang1, float _ang2, float _mult, bool _t
     }
     
     ofPushMatrix();
-        ofLine( ofVec2f(0,0), ofVec2f(0, -length) );
-        ofTranslate( 0, -length );
-        
-//        generation++;
+    ofLine( ofVec2f(0,0), ofVec2f(0, -length) );
+    ofTranslate( 0, -length );
     
-        float noise = ofNoise(ofGetElapsedTimef() * 0.1 );
+    //        generation++;
+    
+    float noise = ofNoise(ofGetElapsedTimef() * 0.1 );
+    
+    if( length > 2 ){
+        ofPushMatrix();{
+            ofRotate( ( _ang1 + theta + noise * 10-5 ) * _mult );
+            branch( length * 0.666, _ang1, _ang2, _mult, _trans );
+        }ofPopMatrix();
         
-        if( length > 2 ){
-            ofPushMatrix();{
-                ofRotate( ( _ang1 + theta + noise * 10-5 ) * _mult );
-                branch( length * 0.666, _ang1, _ang2, _mult, _trans );
-            }ofPopMatrix();
-            
-            ofPushMatrix();{
-                ofRotate( ( _ang2 + theta - noise * 10-5 ) * _mult );
-                branch( length * 0.666, _ang1, _ang2, _mult, _trans );
-            }ofPopMatrix();
-        }
+        ofPushMatrix();{
+            ofRotate( ( _ang2 + theta - noise * 10-5 ) * _mult );
+            branch( length * 0.666, _ang1, _ang2, _mult, _trans );
+        }ofPopMatrix();
+    }
     
     ofPopMatrix();
     
-//    generation--;
+    //    generation--;
 }
 
 void Enemy::drawWings() {
@@ -75,12 +135,12 @@ void Enemy::drawWings() {
         ofSetColor( 255, 0, 0 );
         ofTranslate( pos );
         ofRotate( -115+ofNoise(ofGetElapsedTimef()));
-        branch( 150, -10, 50, -1 );
+        branch( 100, -10, 50, -1 );
     }ofPopMatrix();
     ofPushMatrix();{
         ofSetColor( 255, 0, 0 );
         ofTranslate( pos );
         ofRotate( 115+ofNoise(ofGetElapsedTimef()) );
-        branch( 150, -10, 50 );
+        branch( 100, -10, 50 );
     }ofPopMatrix();
 }
