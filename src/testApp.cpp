@@ -39,6 +39,7 @@ void testApp::setup(){
     { // Mauricio
         //ship1.setup(ofVec2f( ofGetWindowWidth() / 2 , ofGetWindowHeight() / 2), 2, ofColor( ofColor( 20, 20, 200)));
         //        enemyFbo.allocate( 0 , 0 );
+        ofSeedRandom();
     }
 }
 

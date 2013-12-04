@@ -17,7 +17,7 @@ void Enemy::setup() {
     // Matt
     generation = 0;
     pos = ofGetWindowSize() / 2.0;
-    vel.set( ofRandom(-0.5, 0.5));
+    vel.set( ofRandom(-1, 1), ofRandom(-1, 1));
     attack = true;
     
 }
@@ -47,17 +47,17 @@ void Enemy::update(vector <SpaceShip> _tmp){
             if( d[1] < d[0] && d[1] < d[2] && d[1] < d[3]){
                 
                 pos.x = ofLerp( pos.x, _tmp[1].pos.x, 0.02);
-                pos.y = ofLerp( pos.x, _tmp[1].pos.y, 0.02);
+                pos.y = ofLerp( pos.y, _tmp[1].pos.y, 0.02);
             }
             
             if( d[2] < d[0] && d[2] < d[1] && d[2] < d[3]){
                 
                 pos.x = ofLerp( pos.x, _tmp[2].pos.x, 0.02);
-                pos.y = ofLerp( pos.y, _tmp[2].pos.x, 0.02);
+                pos.y = ofLerp( pos.y, _tmp[2].pos.y, 0.02);
             }
             if( d[3] < d[0] && d[3] < d[1] && d[3] < d[2]){
                 pos.x = ofLerp( pos.x, _tmp[3].pos.x, 0.02);
-                pos.y = ofLerp( pos.y, _tmp[3].pos.x, 0.02);
+                pos.y = ofLerp( pos.y, _tmp[3].pos.y, 0.02);
             
             }
         }
@@ -83,7 +83,7 @@ void Enemy::update(vector <SpaceShip> _tmp){
     if( attackCounter > 500){
         
         attackCounter = 0;
-        vel.set( ofRandom( -1, 1));
+        vel.set( ofRandom(-1, 1), ofRandom(-1, 1));
     }
     
 }
