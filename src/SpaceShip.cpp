@@ -17,7 +17,7 @@ void SpaceShip::setup( int _index, ofVec2f _pos, ofColor _colorPlayer/*, ofImage
         colorPlayer = _colorPlayer;
         /*spaceImage = _spaceImage;*/
         //spaceShipSize = 50;
-        rotAngle = 0;
+        //rotAngle = 0;
         //size = 150;
         inc = 20;
         //rotAngleInc = 1 * 0.15;
@@ -25,6 +25,19 @@ void SpaceShip::setup( int _index, ofVec2f _pos, ofColor _colorPlayer/*, ofImage
     
     { // Matt
         controlIndex = _index;
+        
+        // Angled toward the center.
+        if ( controlIndex == 0 ) rotAngle = PI + PI / 4;
+        else if ( controlIndex == 1 ) rotAngle = PI - PI / 4;
+        else if ( controlIndex == 2 ) rotAngle = TWO_PI - PI / 4;
+        else if ( controlIndex == 3 ) rotAngle = PI / 4;
+        // Alternatively, facing each other vertically.
+        /*if ( controlIndex == 0 || controlIndex == 1 ) {
+            rotAngle = PI;
+        } else {
+            rotAngle = 0;
+        }*/
+        
         rotAngleInc = 1 * 0.15;
         vel.set( 0 );
         acc.set( 0 );

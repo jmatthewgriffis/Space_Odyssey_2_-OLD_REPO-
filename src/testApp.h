@@ -57,6 +57,7 @@ public:
     vector< SpaceShip > shipList;
     vector< Bullet > bulletList;
     void collideSpaceshipsAndBullets();
+    void collideSpaceshipsAndSpaceships();
     
     // Mauricio
     //SpaceShip ship1;

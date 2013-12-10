@@ -73,6 +73,7 @@ void testApp::update(){
     }
     
     collideSpaceshipsAndBullets();
+    collideSpaceshipsAndSpaceships();
     
     
     { // Matt
@@ -510,6 +511,27 @@ void testApp::collideSpaceshipsAndBullets() {
                     shipList[ j ].applyForce( bulletList[ i ].vel * 0.2 );
                     shipList[ j ].health -= bulletList[ i ].damage;
                     bulletList[ i ].bDestroyMe = true;
+                }
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------
+void testApp::collideSpaceshipsAndSpaceships() {
+    
+    { // Matt
+        for ( int i = 0; i < shipList.size(); i++ ) {
+            for ( int j = 0; j < shipList.size(); j++ ) {
+                if ( i != j ) { // Prevent ship colliding with self.
+                    float dist = shipList[ i ].pos.distance( shipList[ j ].pos );
+                    if ( dist < shipList[ i ].size / 2 + shipList[ j ].size / 2 ) {
+                        shipList[ i ].applyForce( shipList[ j ].vel * 1 );
+                        shipList[ j ].applyForce( shipList[ i ].vel * 1 );
+                        float damage = 10;
+                        shipList[ i ].health -= damage;
+                        shipList[ j ].health -= damage;
+                    }
                 }
             }
         }

@@ -29,10 +29,22 @@ void Enemy::update(vector <SpaceShip> _tmp){
     
     //Mauricio
         
-        d[0] = pos.distance(_tmp[0].pos);
+        /*d[0] = pos.distance(_tmp[0].pos);
         d[1] = pos.distance(_tmp[1].pos);
         d[2] = pos.distance(_tmp[2].pos);
-        d[3] = pos.distance(_tmp[3].pos);
+        d[3] = pos.distance(_tmp[3].pos);*/
+    
+    { // Matt (have to deal with changing vector size, here's a hack)
+        float tooFar = ofGetWidth() * 2;
+        if ( _tmp.size() > 3 ) d[3] = pos.distance(_tmp[3].pos);
+        else d[3] = tooFar;
+        if ( _tmp.size() > 2 ) d[2] = pos.distance(_tmp[2].pos);
+        else d[2] = tooFar;
+        if ( _tmp.size() > 1 ) d[1] = pos.distance(_tmp[1].pos);
+        else d[1] = tooFar;
+        if ( _tmp.size() > 0 ) d[0] = pos.distance(_tmp[0].pos);
+        else d[0] = tooFar;
+    } // End Matt
     
     //This will trigger the attack toward one of the enmies
         if( attack){
