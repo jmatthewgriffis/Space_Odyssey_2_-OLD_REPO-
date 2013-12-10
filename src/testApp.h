@@ -56,6 +56,7 @@ public:
     Enemy metroid;
     vector< SpaceShip > shipList;
     vector< Bullet > bulletList;
+    void collideSpaceshipsAndBullets();
     
     // Mauricio
     //SpaceShip ship1;

@@ -21,5 +21,5 @@ public:
     
     bool bDestroyMe;
     
-    float size;
+    float size, damage;
 };

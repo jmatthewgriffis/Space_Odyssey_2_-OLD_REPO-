@@ -21,7 +21,7 @@ class SpaceShip {
     // Mauricio
     
 //    SpaceShip(ofVec2f _pos, ofVec2f _vel, ofColor _colorPlayer/*, ofImage _spaceImage*/);
-    void setup(ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*/);
+    void setup(int _index /* Matt--I added this int. */, ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*/);
     void draw();
     void update();
     
@@ -46,9 +46,10 @@ class SpaceShip {
     //---------------------------
     
     // Matt
-    
-    void applyForce( float _force, float _ang );
+    void applyForce( ofVec2f _force );
+    void applyAngularForce( float _force, float _ang );
     float boost, engineSize, health, healthMax;
     ofVec2f vel, acc;
-    int fireTimer, firePacer, timerMax, pacerMax;
+    int controlIndex, fireTimer, firePacer, timerMax, pacerMax;
+    bool bDestroyMe;
 };

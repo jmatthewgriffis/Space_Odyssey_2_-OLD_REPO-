@@ -9,7 +9,7 @@
 #include "SpaceShip.h"
 
 
-void SpaceShip::setup(ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*/){
+void SpaceShip::setup( int _index, ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*/){
     
     { // Mauricio
         pos = _pos;
@@ -20,13 +20,15 @@ void SpaceShip::setup(ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*
         rotAngle = 0;
         //size = 150;
         inc = 20;
-        rotAngleInc = 1 * 0.15;
+        //rotAngleInc = 1 * 0.15;
     }
     
     { // Matt
+        controlIndex = _index;
+        rotAngleInc = 1 * 0.15;
         vel.set( 0 );
         acc.set( 0 );
-        rotateCCWise = rotateCWise = notAngled = addToSpeed = fire = bReadyToFire = bFiring = false;
+        rotateCCWise = rotateCWise = notAngled = addToSpeed = fire = bReadyToFire = bFiring = bDestroyMe = false;
         allowAction = true;
         fireTimer = firePacer = 0;
         timerMax = 30;
@@ -35,7 +37,7 @@ void SpaceShip::setup(ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*
         size = 150/2;
         engineSize = size / 3;
         healthMax = 100;
-        health = healthMax - 25;
+        health = healthMax;
     }
 }
 
@@ -170,7 +172,7 @@ void SpaceShip::update(){
         
         if ( fire ) {
             // Accelerate.
-            applyForce( boost, rotAngle );
+            applyAngularForce( boost, rotAngle );
             
             if ( allowAction ) {
                 // Prep for firing.
@@ -194,6 +196,10 @@ void SpaceShip::update(){
         vel += acc;
         pos += vel;
         
+        if ( health <= 0 ) {
+            bDestroyMe = true;
+        }
+        
         float damping = 0.97;
         vel *= damping;
         acc.set( 0 );
@@ -202,8 +208,6 @@ void SpaceShip::update(){
 
 
 void SpaceShip::draw(){
-    
-    //if ( fireTimer > 0 ) cout<<fireTimer<<endl;
     
     { // Mauricio
         ofSetColor( colorPlayer);
@@ -247,7 +251,15 @@ void SpaceShip::draw(){
     }
 }
 
-void SpaceShip::applyForce( float _force, float _ang ) {
+void SpaceShip::applyForce( ofVec2f _force ) {
+    
+    { // Matt
+        // Apply the force using vector math (doesn't require an angle).
+        acc += _force;
+    }
+}
+
+void SpaceShip::applyAngularForce( float _force, float _ang ) {
     
     { // Matt
         // Apply the force in the angle opposite the direction of the engine.
