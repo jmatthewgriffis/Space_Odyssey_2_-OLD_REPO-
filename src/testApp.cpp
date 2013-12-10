@@ -69,7 +69,7 @@ void testApp::update(){
     
     { // Mauricio
         //ship1.update();
-        secondBackground.update();
+        //secondBackground.update();
     }
     
     collideSpaceshipsAndBullets();
@@ -77,7 +77,7 @@ void testApp::update(){
     
     
     { // Matt
-        metroid.update(shipList);
+        //metroid.update(shipList);
         
         for ( int i = 0; i < shipList.size(); i++ ) {
             shipList[ i ].update();

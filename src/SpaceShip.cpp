@@ -209,6 +209,21 @@ void SpaceShip::update(){
         vel += acc;
         pos += vel;
         
+        // Pac-man across to the other side.
+        float margin = 50;
+        if ( pos.x < -margin ) {
+            pos.x = ofGetWindowWidth() + margin;
+        }
+        if ( pos.x > ofGetWindowWidth() + margin ) {
+            pos.x = -margin;
+        }
+        if ( pos.y < -margin ) {
+            pos.y = ofGetWindowHeight() + margin;
+        }
+        if ( pos.y > ofGetWindowHeight() + margin ) {
+            pos.y = -margin;
+        }
+        
         if ( health <= 0 ) {
             bDestroyMe = true;
         }
