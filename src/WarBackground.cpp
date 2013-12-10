@@ -24,8 +24,8 @@ void WarBackground::setup(){
 void WarBackground::addVehicle(){
     
     ofVec2f _pos = ofVec2f(0 , 0)/*ofVec2f(ofRandom( ofGetWindowWidth(), ofGetWindowHeight() ) )*/;
-    ofVec2f _vel = ofVec2f( ofRandom( - 5, 10 ) );
-    ofVec2f _dest = ofVec2f(ofRandom( ofGetWindowWidth(), ofGetWindowHeight() ) );
+    ofVec2f _vel = ofVec2f( ofRandom( - 1, 1 ) );
+    ofVec2f _dest = ofVec2f(ofRandom( 0, ofGetWindowWidth()), ofRandom(0, ofGetWindowHeight() ) );
     Vehicle tmp( _pos, _vel, _dest ) ;
     vList.push_back( tmp);
     
@@ -49,7 +49,7 @@ void WarBackground::update(){
         
         if( v1->pos.distance(v1->dest) < 5){
             
-            v1->dest = ofVec2f( ofRandom( ofGetWindowWidth(), ofGetWindowHeight()));
+            v1->dest = ofVec2f( ofRandom( 0, ofGetWindowWidth()), ofRandom( 0, ofGetWindowHeight()));
             
         }
         
@@ -68,7 +68,7 @@ void WarBackground::draw(){
         ofSetColor(255);
         ofCircle(v1->dest, 1.5);
         v1->draw();
-        ofDrawBitmapString(ofToString(v1->pos.x), 20, i * 10);
+        ofDrawBitmapString(ofToString(v1->vel.x), 20, i * 10);
         i++;
     }
     

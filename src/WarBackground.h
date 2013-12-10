@@ -8,7 +8,7 @@
 
 #pragma once
 #include "ofMain.h"
-#define NUM_OF_VEHICLES 30
+#define NUM_OF_VEHICLES 5
 
 //These is going to be our vehicles that are moving in the second background
 struct Vehicle{
@@ -22,7 +22,7 @@ struct Vehicle{
         vel.set( _vel );
         dest.set( _dest );
         damping = ofVec2f( 0.01f ) ;
-        maxSpeed = 10.0;
+        maxSpeed = 2.0;
         maxForce = 0.4;
         slowDownRadius = 100.0;
         
@@ -92,7 +92,7 @@ struct Vehicle{
             float rotAmt = atan2( vel.y, vel.x );
             ofRotate( ofRadToDeg(rotAmt) + 90 );
             ofFill();
-            ofRect(0 , 0 , 5, 10 );
+            ofRect(0 , 0 , 20, 50 );
             
         }ofPopMatrix();
     }

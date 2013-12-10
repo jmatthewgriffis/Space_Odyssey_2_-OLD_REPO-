@@ -3,6 +3,14 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     
+    { // Mauricio
+        //ship1.setup(ofVec2f( ofGetWindowWidth() / 2 , ofGetWindowHeight() / 2), 2, ofColor( ofColor( 20, 20, 200)));
+        //        enemyFbo.allocate( 0 , 0 );
+        ofSeedRandom();
+        secondBackground.setup();
+    }
+    
+    
     { // Matt
         killFrameRate = false; // Turn on the enemy and background, watch the framerate drop.
         // Maintenance
@@ -36,12 +44,7 @@ void testApp::setup(){
     }
     
     
-    { // Mauricio
-        //ship1.setup(ofVec2f( ofGetWindowWidth() / 2 , ofGetWindowHeight() / 2), 2, ofColor( ofColor( 20, 20, 200)));
-        //        enemyFbo.allocate( 0 , 0 );
-        ofSeedRandom();
-        secondBackground.setup();
-    }
+
 }
 
 //--------------------------------------------------------------
@@ -101,6 +104,8 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
+    secondBackground.draw();
+    
     // Matt
     //cout<<bulletList.size()<<endl;
     
@@ -120,7 +125,7 @@ void testApp::draw(){
     
     { // Mauricio
         //ship1.draw();
-        secondBackground.draw();
+        
     }
     
     { // Matt
