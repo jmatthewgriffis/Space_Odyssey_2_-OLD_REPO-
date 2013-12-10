@@ -204,9 +204,9 @@
 				CD7846D9184C330400D7E1A1 /* Enemy.cpp */,
 				CD7846DA184C330400D7E1A1 /* Enemy.h */,
 				CD087AFC184E309400FB3B5E /* Bullet.cpp */,
+				CD087AFD184E309400FB3B5E /* Bullet.h */,
 				6764F7391856A506004F1639 /* WarBackground.cpp */,
 				6764F73A1856A506004F1639 /* WarBackground.h */,
-				CD087AFD184E309400FB3B5E /* Bullet.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

@@ -16,9 +16,9 @@ void SpaceShip::setup(ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*
         //vel = _vel;
         colorPlayer = _colorPlayer;
         /*spaceImage = _spaceImage;*/
-        spaceShipSize = 50;
+        //spaceShipSize = 50;
         rotAngle = 0;
-        size = 150;
+        //size = 150;
         inc = 20;
         rotAngleInc = 1 * 0.15;
     }
@@ -32,6 +32,8 @@ void SpaceShip::setup(ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*
         timerMax = 30;
         pacerMax = 15;
         boost = 0.3;
+        size = 150/2;
+        engineSize = size / 3;
     }
 }
 
@@ -213,7 +215,7 @@ void SpaceShip::draw(){
                 ofTranslate( pos.x, pos.y);
                 
                 ofSetColor( 255);
-                ofRect( sin(rotAngle) * 50, cos( rotAngle) * 50, 50, 50);
+                ofRect( sin(rotAngle) * engineSize, cos( rotAngle) * engineSize, engineSize, engineSize);
                 
                 
             }ofPopMatrix();

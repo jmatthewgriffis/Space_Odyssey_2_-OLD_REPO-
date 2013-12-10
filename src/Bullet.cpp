@@ -14,6 +14,8 @@ Bullet::Bullet( ofVec2f _pos, float _ang ) {
     
     pos = _pos;
     
+    size = 5;
+    
     float fVel = 15;
     vel.x = sin( _ang ) * fVel;
     vel.y = cos( _ang ) * fVel;
@@ -36,5 +38,5 @@ void Bullet::update() {
 void Bullet::draw() {
     
     ofSetColor( 255 );
-    ofCircle( pos, 10 );
+    ofCircle( pos, size );
 }

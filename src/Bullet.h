@@ -20,4 +20,6 @@ public:
     ofVec2f pos, vel;
     
     bool bDestroyMe;
+    
+    float size;
 };
