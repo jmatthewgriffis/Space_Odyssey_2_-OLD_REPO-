@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6763661518403CCA008A5BE0 /* SpaceShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6763661318403CCA008A5BE0 /* SpaceShip.cpp */; };
+		6764F73B1856A506004F1639 /* WarBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6764F7391856A506004F1639 /* WarBackground.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		CD087AFE184E309400FB3B5E /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD087AFC184E309400FB3B5E /* Bullet.cpp */; };
 		CD7846DB184C330400D7E1A1 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD7846D9184C330400D7E1A1 /* Enemy.cpp */; };
@@ -65,6 +66,8 @@
 /* Begin PBXFileReference section */
 		6763661318403CCA008A5BE0 /* SpaceShip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpaceShip.cpp; sourceTree = "<group>"; };
 		6763661418403CCA008A5BE0 /* SpaceShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceShip.h; sourceTree = "<group>"; };
+		6764F7391856A506004F1639 /* WarBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WarBackground.cpp; sourceTree = "<group>"; };
+		6764F73A1856A506004F1639 /* WarBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarBackground.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		CD087AFC184E309400FB3B5E /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
 		CD087AFD184E309400FB3B5E /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				CD7846D9184C330400D7E1A1 /* Enemy.cpp */,
 				CD7846DA184C330400D7E1A1 /* Enemy.h */,
 				CD087AFC184E309400FB3B5E /* Bullet.cpp */,
+				6764F7391856A506004F1639 /* WarBackground.cpp */,
+				6764F73A1856A506004F1639 /* WarBackground.h */,
 				CD087AFD184E309400FB3B5E /* Bullet.h */,
 			);
 			path = src;
@@ -303,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD087AFE184E309400FB3B5E /* Bullet.cpp in Sources */,
+				6764F73B1856A506004F1639 /* WarBackground.cpp in Sources */,
 				CD7846DB184C330400D7E1A1 /* Enemy.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,

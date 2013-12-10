@@ -21,6 +21,7 @@
 #include "SpaceShip.h"
 #include "Enemy.h"
 #include "Bullet.h"
+#include "WarBackground.h"
 
 // Question for Charlie: how to pass a function into a function.
 
@@ -59,4 +60,5 @@ public:
     //SpaceShip ship1;
     
     ofFbo enemyFbo;
+    WarBackground secondBackground;
 };

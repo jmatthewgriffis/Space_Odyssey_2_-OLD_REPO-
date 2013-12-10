@@ -40,6 +40,7 @@ void testApp::setup(){
         //ship1.setup(ofVec2f( ofGetWindowWidth() / 2 , ofGetWindowHeight() / 2), 2, ofColor( ofColor( 20, 20, 200)));
         //        enemyFbo.allocate( 0 , 0 );
         ofSeedRandom();
+        secondBackground.setup();
     }
 }
 
@@ -57,6 +58,7 @@ void testApp::update(){
     
     { // Mauricio
         //ship1.update();
+        secondBackground.update();
     }
     
     
@@ -113,11 +115,12 @@ void testApp::draw(){
             if ( killFrameRate ) metroid.draw();
         }
         //    enemyFbo.end();
-        enemyFbo.draw( ofGetWindowWidth() , ofGetWindowHeight());
+//        enemyFbo.draw( ofGetWindowWidth() , ofGetWindowHeight());
     }
     
     { // Mauricio
         //ship1.draw();
+        secondBackground.draw();
     }
     
     { // Matt
