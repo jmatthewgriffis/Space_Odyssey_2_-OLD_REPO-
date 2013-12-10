@@ -48,7 +48,7 @@ class SpaceShip {
     // Matt
     
     void applyForce( float _force, float _ang );
-    float boost, engineSize;
+    float boost, engineSize, health, healthMax;
     ofVec2f vel, acc;
     int fireTimer, firePacer, timerMax, pacerMax;
 };

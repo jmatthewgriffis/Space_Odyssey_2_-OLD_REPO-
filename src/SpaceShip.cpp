@@ -34,6 +34,8 @@ void SpaceShip::setup(ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*
         boost = 0.3;
         size = 150/2;
         engineSize = size / 3;
+        healthMax = 100;
+        health = healthMax - 25;
     }
 }
 
@@ -214,6 +216,26 @@ void SpaceShip::draw(){
                 
                 ofTranslate( pos.x, pos.y);
                 
+                { // Matt
+                    // Draw the health bar
+                    ofSetRectMode( OF_RECTMODE_CORNER );
+                    float offset = 1;
+                    float offsetBar = 10;
+                    float barHeight = 10;
+                    float barLength = size;
+                    float currentHealth = ofMap( health, 0, healthMax, 0, barLength - offset * 2 );
+                    // The border.
+                    ofSetColor( 255 );
+                    ofNoFill();
+                    ofRect( -size / 2, size / 2 + offsetBar, barLength, barHeight );
+                    ofFill();
+                    // The current health.
+                    ofSetColor( 0, 255, 0 );
+                    ofRect( -size / 2 + offset, size / 2 + offsetBar + offset, currentHealth, barHeight - offset * 2 );
+                } // End Matt
+                
+                // Draw the engine--Matt
+                ofSetRectMode( OF_RECTMODE_CENTER ); // Matt
                 ofSetColor( 255);
                 ofRect( sin(rotAngle) * engineSize, cos( rotAngle) * engineSize, engineSize, engineSize);
                 
