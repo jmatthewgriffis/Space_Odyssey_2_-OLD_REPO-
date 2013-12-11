@@ -20,19 +20,31 @@ void Enemy::setup() {
     vel.set( ofRandom(-1, 1), ofRandom(-1, 1));
     attack = true;
     
+    //Mauricio
+//    counter = 0;
+//    frameNum = 0;
+    
+    //We load our 50 images to create our animation
+    for( int i = 0; i < 50; i++){
+        
+        string frameNum = ofToString(i);
+        metroid[i].loadImage(frameNum + ".png");
+    }
+    
+    
+    
 }
 
 void Enemy::update(vector <SpaceShip> _tmp){
     
+       
     // Matt
     pos += vel;
-    
-    //Mauricio
         
-        /*d[0] = pos.distance(_tmp[0].pos);
-        d[1] = pos.distance(_tmp[1].pos);
-        d[2] = pos.distance(_tmp[2].pos);
-        d[3] = pos.distance(_tmp[3].pos);*/
+//        d[0] = pos.distance(_tmp[0].pos);
+//        d[1] = pos.distance(_tmp[1].pos);
+//        d[2] = pos.distance(_tmp[2].pos);
+//        d[3] = pos.distance(_tmp[3].pos);
     
     { // Matt (have to deal with changing vector size, here's a hack)
         float tooFar = ofGetWidth() * 2;
@@ -69,8 +81,7 @@ void Enemy::update(vector <SpaceShip> _tmp){
             }
             if( d[3] < d[0] && d[3] < d[1] && d[3] < d[2]){
                 pos.x = ofLerp( pos.x, _tmp[3].pos.x, 0.02);
-                pos.y = ofLerp( pos.y, _tmp[3].pos.y, 0.02);
-            
+                pos.y = ofLerp( pos.y, _tmp[3].pos.y, 0.02);            
             }
         }
     
@@ -100,10 +111,18 @@ void Enemy::update(vector <SpaceShip> _tmp){
     
 }
 
-void Enemy::draw(){
+void Enemy::draw(int &_frameNum){
     
     // Matt
-    drawWings();
+//    drawWings();
+    ofSetRectMode(OF_RECTMODE_CORNER);
+    
+    ofPushMatrix();{
+        
+        ofTranslate(pos.x , pos.y);
+        metroid[_frameNum].draw(0,0);
+        
+    }ofPopMatrix();
 }
 
 void Enemy::branch( float length, float _ang1, float _ang2, float _mult, bool _trans ) {

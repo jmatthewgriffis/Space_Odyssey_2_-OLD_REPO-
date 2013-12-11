@@ -70,6 +70,16 @@ void testApp::update(){
     { // Mauricio
         //ship1.update();
         //secondBackground.update();
+        
+        //Mauricio
+        //After trying to coming up with a counter that goes up and down, Jennifer Presto provided this. withour her contribution it woudn't have been possible to achive it.
+        frameNum = abs ( abs( 49 - counter) - 49);
+        counter++;
+        
+        if( counter == 100){
+            
+            counter = 0;
+        }
     }
     
     collideSpaceshipsAndBullets();
@@ -77,7 +87,7 @@ void testApp::update(){
     
     
     { // Matt
-        //metroid.update(shipList);
+        metroid.update(shipList);
         
         for ( int i = 0; i < shipList.size(); i++ ) {
             shipList[ i ].update();
@@ -106,8 +116,6 @@ void testApp::update(){
     
     
     
-    
-    
     // Note from Matt: Following up the boolean function we created above, this oF function sorts the vector according to the values of the booleans and then removes any with a 'true' value:
     ofRemove( bulletList, bShouldIErase );
     ofRemove( shipList, bShouldIErase2 );
@@ -129,7 +137,8 @@ void testApp::draw(){
             //cam.begin(); //
             //cam.setupPerspective();
             if ( killFrameRate ) drawGalaxy();
-            if ( killFrameRate ) metroid.draw();
+            //Mauricio: For some reason the only way that our metroid animation works is by passing the frameNum from the testApp. I initally had everything inside the class but it didn't work. Passing the frameNum throught the draw it works.
+            if ( killFrameRate ) metroid.draw(frameNum);
         }
         //    enemyFbo.end();
 //        enemyFbo.draw( ofGetWindowWidth() , ofGetWindowHeight());

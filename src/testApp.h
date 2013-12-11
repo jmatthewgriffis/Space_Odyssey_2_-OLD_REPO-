@@ -64,4 +64,8 @@ public:
     
     ofFbo enemyFbo;
     WarBackground secondBackground;
+    
+    //Values passed to the enemy
+    int counter, frameNum;
+//    ofVec2f pos;
 };
