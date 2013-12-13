@@ -41,7 +41,7 @@ void SpaceShip::setup( int _index, ofVec2f _pos, ofColor _colorPlayer/*, ofImage
         rotAngleInc = 0.75 * 0.15;
         vel.set( 0 );
         acc.set( 0 );
-        rotateCCWise = rotateCWise = notAngled = addToSpeed = fire = bReadyToFire = bFiring = bDestroyMe = false;
+        rotateCCWise = rotateCWise = notAngled = addToSpeed = propel = fire = bReadyToFire = bFiring = bDestroyMe = false;
         allowAction = true;
         fireTimer = firePacer = 0;
         timerMax = 30;
@@ -184,23 +184,24 @@ void SpaceShip::update(){
         // Reset the bool.
         //shootBullet = false;
         
-        if ( fire ) {
+        if ( propel ) {
             // Accelerate.
             applyAngularForce( boost, rotAngle );
-            
+        }
+        if ( fire ) {
             if ( allowAction ) {
                 // Prep for firing.
-                if ( fireTimer == 0 ) {
+                /*if ( fireTimer == 0 ) {
                     fireTimer = timerMax;
                     //bFiring = true;
                     //allowAction = false;
-                } else {
+                } else { */
                     bFiring = true;
-                    fireTimer = 0;
+                    //fireTimer = 0;
                     //cout<<"yes!"<<endl;
                 }
                 allowAction = false;
-            }
+            //}
         } else {
             bFiring = false;
             firePacer = 0;
@@ -311,24 +312,26 @@ void SpaceShip::draw(){
         }ofPopMatrix();
     }
     
-    ofSetColor(255);
-    if (controlIndex == 0) {
-        if (rotateCCWise) ofDrawBitmapString("q", 10, 10);
-        if (rotateCWise) ofDrawBitmapString("e", 20, 10);
-        if (fire) ofDrawBitmapString("w", 30, 10);
-    } else if (controlIndex == 1) {
-        if (rotateCCWise) ofDrawBitmapString("j", 40, 10);
-        if (rotateCWise) ofDrawBitmapString("l", 50, 10);
-        if (fire) ofDrawBitmapString("k", 60, 10);
-    } else if (controlIndex == 2) {
-        if (rotateCCWise) ofDrawBitmapString("v", 70, 10);
-        if (rotateCWise) ofDrawBitmapString("n", 80, 10);
-        if (fire) ofDrawBitmapString("b", 90, 10);
-    } else if (controlIndex == 3) {
-        if (rotateCCWise) ofDrawBitmapString("L", 100, 10);
-        if (rotateCWise) ofDrawBitmapString("D", 110, 10);
-        if (fire) ofDrawBitmapString("R", 120, 10);
-    }
+    /*{ // Debugging controls by showing them on-screen.
+        ofSetColor(255);
+        if (controlIndex == 0) {
+            if (rotateCCWise) ofDrawBitmapString("q", 10, 10);
+            if (propel) ofDrawBitmapString("w", 20, 10);
+            if (fire) ofDrawBitmapString("e", 30, 10);
+        } else if (controlIndex == 1) {
+            if (rotateCCWise) ofDrawBitmapString("i", 40, 10);
+            if (propel) ofDrawBitmapString("o", 50, 10);
+            if (fire) ofDrawBitmapString("p", 60, 10);
+        } else if (controlIndex == 2) {
+            if (rotateCCWise) ofDrawBitmapString("Q", 70, 10);
+            if (propel) ofDrawBitmapString("W", 80, 10);
+            if (fire) ofDrawBitmapString("E", 90, 10);
+        } else if (controlIndex == 3) {
+            if (rotateCCWise) ofDrawBitmapString("I", 100, 10);
+            if (propel) ofDrawBitmapString("O", 110, 10);
+            if (fire) ofDrawBitmapString("P", 120, 10);
+        }
+    }*/
 }
 
 void SpaceShip::applyForce( ofVec2f _force ) {

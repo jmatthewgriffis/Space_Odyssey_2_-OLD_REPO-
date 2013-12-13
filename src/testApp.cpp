@@ -142,7 +142,7 @@ void testApp::draw(){
         { // Matt
             //cam.begin(); //
             //cam.setupPerspective();
-            if ( killFrameRate ) drawGalaxy();
+            /*if ( killFrameRate ) */drawGalaxy();
             //Mauricio: For some reason the only way that our metroid animation works is by passing the frameNum from the testApp. I initally had everything inside the class but it didn't work. Passing the frameNum throught the draw it works.
             metroid.draw(frameNum);
         }
@@ -215,7 +215,7 @@ void testApp::keyPressed(int key){
             {
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 0 ) {
-                        shipList[ i ].fire = true;
+                        shipList[ i ].propel = true;
                     }
                 }
                 break;
@@ -225,7 +225,8 @@ void testApp::keyPressed(int key){
             case 'E':
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 0 ) {
-                        shipList[ i ].rotateCWise = true;
+                        //shipList[ i ].rotateCWise = true;
+                        shipList[ i ].fire = true;
                     }
                 }
                 break;
@@ -245,7 +246,7 @@ void testApp::keyPressed(int key){
             {
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 1 ) {
-                        shipList[ i ].fire = true;
+                        shipList[ i ].propel = true;
                     }
                 }
                 break;
@@ -255,7 +256,8 @@ void testApp::keyPressed(int key){
             case 'p':
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 1 ) {
-                        shipList[ i ].rotateCWise = true;
+                        //shipList[ i ].rotateCWise = true;
+                        shipList[ i ].fire = true;
                     }
                 }
                 break;
@@ -384,7 +386,7 @@ void testApp::keyReleased(int key){
             case 'W':
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 0 ) {
-                        shipList[ i ].fire = false;
+                        shipList[ i ].propel = false;
                     }
                 }
                 break;
@@ -393,7 +395,8 @@ void testApp::keyReleased(int key){
             case 'E':
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 0 ) {
-                        shipList[ i ].rotateCWise = false;
+                        //shipList[ i ].rotateCWise = false;
+                        shipList[ i ].fire = false;
                     }
                 }
                 break;
@@ -412,7 +415,7 @@ void testApp::keyReleased(int key){
             case 'O':
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 1 ) {
-                        shipList[ i ].fire = false;
+                        shipList[ i ].propel = false;
                     }
                 }
                 break;
@@ -421,7 +424,8 @@ void testApp::keyReleased(int key){
             case 'P':
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 1 ) {
-                        shipList[ i ].rotateCWise = false;
+                        //shipList[ i ].rotateCWise = false;
+                        shipList[ i ].fire = false;
                     }
                 }
                 break;
@@ -656,13 +660,13 @@ void testApp::checkOsc() {
             if ( key2 == 1 ) {
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 2 ) {
-                        shipList[ i ].fire = true;
+                        shipList[ i ].propel = true;
                     }
                 }
             } else {
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 2 ) {
-                        shipList[ i ].fire = false;
+                        shipList[ i ].propel = false;
                     }
                 }
             }
@@ -670,13 +674,13 @@ void testApp::checkOsc() {
             if ( key3 == 1 ) {
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 2 ) {
-                        shipList[ i ].rotateCWise = true;
+                        shipList[ i ].fire = true;
                     }
                 }
             } else {
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 2 ) {
-                        shipList[ i ].rotateCWise = false;
+                        shipList[ i ].fire = false;
                     }
                 }
             }
@@ -698,13 +702,13 @@ void testApp::checkOsc() {
             if ( key5 == 1 ) {
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 3 ) {
-                        shipList[ i ].fire = true;
+                        shipList[ i ].propel = true;
                     }
                 }
             } else {
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 3 ) {
-                        shipList[ i ].fire = false;
+                        shipList[ i ].propel = false;
                     }
                 }
             }
@@ -712,13 +716,13 @@ void testApp::checkOsc() {
             if ( key6 == 1 ) {
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 3 ) {
-                        shipList[ i ].rotateCWise = true;
+                        shipList[ i ].fire = true;
                     }
                 }
             } else {
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 3 ) {
-                        shipList[ i ].rotateCWise = false;
+                        shipList[ i ].fire = false;
                     }
                 }
             }

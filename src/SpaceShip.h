@@ -39,7 +39,7 @@ class SpaceShip {
     float velModifier;
     float speed;
     
-    bool rotateCCWise, rotateCWise, notAngled, addToSpeed, fire, bReadyToFire, bFiring, allowAction;
+    bool rotateCCWise, rotateCWise, notAngled, addToSpeed, propel, fire, bReadyToFire, bFiring, allowAction;
     
     int inc;
     
