@@ -14,7 +14,7 @@ void testApp::setup(){
     { // Matt
         
         gameState = 0;
-        startScreen.loadImage("screen")
+        startScreen.loadImage("spaceships_start_screen.png");
         
         // This one listens to the same port that we were sending to in the other app.
         mReceiver.setup( 12345 );
@@ -138,7 +138,8 @@ void testApp::update(){
 void testApp::draw(){
     
     if ( gameState == 0 ) {
-        
+        //ofSetRectMode(OF_RECTMODE_CENTER);
+        startScreen.draw( 0, 0, ofGetWindowWidth(), ofGetWindowHeight());
         return;
     }
     
