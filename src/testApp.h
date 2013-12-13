@@ -22,6 +22,7 @@
 #include "Enemy.h"
 #include "Bullet.h"
 #include "WarBackground.h"
+#include "ofxOsc.h"
 
 
 
