@@ -15,11 +15,11 @@ Bullet::Bullet( ofVec2f _pos, float _ang ) {
     size = 5;
     damage = 10;
     
-    float fVel = 15;
+    float fVel = 20;
     vel.x = sin( _ang ) * fVel;
     vel.y = cos( _ang ) * fVel;
     
-    pos = _pos + 50 * vel.normalized(); // The extra increment creates the bullet off the ship so it doesn't cause self-damage.
+    pos = _pos + 30 * vel.normalized(); // The extra increment creates the bullet off the ship so it doesn't cause self-damage.
 }
 
 void Bullet::update() {

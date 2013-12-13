@@ -38,14 +38,14 @@ void SpaceShip::setup( int _index, ofVec2f _pos, ofColor _colorPlayer/*, ofImage
          rotAngle = 0;
          }*/
         
-        rotAngleInc = 1 * 0.15;
+        rotAngleInc = 0.75 * 0.15;
         vel.set( 0 );
         acc.set( 0 );
         rotateCCWise = rotateCWise = notAngled = addToSpeed = fire = bReadyToFire = bFiring = bDestroyMe = false;
         allowAction = true;
         fireTimer = firePacer = 0;
         timerMax = 30;
-        pacerMax = 15;
+        pacerMax = 10;
         boost = 0.3;
         size = 150/2;
         engineSize = size / 3;
