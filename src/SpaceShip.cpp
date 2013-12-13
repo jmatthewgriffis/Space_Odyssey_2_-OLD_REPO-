@@ -205,8 +205,10 @@ void SpaceShip::update(){
             firePacer = 0;
             allowAction = true;
         }
-        
-        vel += acc;
+        float maxSpeed = 25;
+        if ( ( vel + acc ).lengthSquared() <= maxSpeed * maxSpeed ) {
+            vel += acc;
+        }
         pos += vel;
         
         // Pac-man across to the other side.
@@ -228,8 +230,8 @@ void SpaceShip::update(){
             bDestroyMe = true;
         }
         
-        float damping = 0.97;
-        vel *= damping;
+        float damping = 0.999;
+        //vel *= damping;
         acc.set( 0 );
     }
 }
