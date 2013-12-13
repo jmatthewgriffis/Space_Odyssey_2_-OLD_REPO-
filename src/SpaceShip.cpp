@@ -33,10 +33,10 @@ void SpaceShip::setup( int _index, ofVec2f _pos, ofColor _colorPlayer/*, ofImage
         else if ( controlIndex == 3 ) rotAngle = PI / 4;
         // Alternatively, facing each other vertically.
         /*if ( controlIndex == 0 || controlIndex == 1 ) {
-            rotAngle = PI;
-        } else {
-            rotAngle = 0;
-        }*/
+         rotAngle = PI;
+         } else {
+         rotAngle = 0;
+         }*/
         
         rotAngleInc = 1 * 0.15;
         vel.set( 0 );
@@ -205,10 +205,18 @@ void SpaceShip::update(){
             firePacer = 0;
             allowAction = true;
         }
-        float maxSpeed = 25;
-        if ( ( vel + acc ).lengthSquared() <= maxSpeed * maxSpeed ) {
-            vel += acc;
+        
+        vel += acc;
+        
+        // Limit the velocity.
+        float maxSpeed = 10;
+        if ( fabs( vel.x ) > maxSpeed ) {
+            vel.x = ( vel.x / fabs( vel.x ) ) * maxSpeed;
         }
+        if ( fabs( vel.y ) > maxSpeed ) {
+            vel.y = ( vel.y / fabs( vel.y ) ) * maxSpeed;
+        }
+        
         pos += vel;
         
         // Pac-man across to the other side.

@@ -138,7 +138,7 @@ void testApp::draw(){
             //cam.setupPerspective();
             if ( killFrameRate ) drawGalaxy();
             //Mauricio: For some reason the only way that our metroid animation works is by passing the frameNum from the testApp. I initally had everything inside the class but it didn't work. Passing the frameNum throught the draw it works.
-            if ( killFrameRate ) metroid.draw(frameNum);
+            metroid.draw(frameNum);
         }
         //    enemyFbo.end();
 //        enemyFbo.draw( ofGetWindowWidth() , ofGetWindowHeight());
@@ -535,11 +535,26 @@ void testApp::collideSpaceshipsAndSpaceships() {
                 if ( i != j ) { // Prevent ship colliding with self.
                     float dist = shipList[ i ].pos.distance( shipList[ j ].pos );
                     if ( dist < shipList[ i ].size / 2 + shipList[ j ].size / 2 ) {
-                        shipList[ i ].applyForce( shipList[ j ].vel * 1 );
-                        shipList[ j ].applyForce( shipList[ i ].vel * 1 );
-                        float damage = 10;
+                        // if traveling in the same direction lose some velocity from impact.
+                        /*float dampen = 0.9;
+                        shipList[ i ].vel.x *= dampen;
+                        shipList[ j ].vel.x *= dampen;
+                        shipList[ i ].vel.y *= dampen;
+                        shipList[ j ].vel.y *= dampen;*/
+                        
+                        // if traveling in different direction apply the opposing force in the opposite direction.
+                        if ( ( shipList[ i ].vel.x <= 0 && shipList[ j ].vel.x >= 0 ) || ( shipList[ j ].vel.x <= 0 && shipList[ i ].vel.x >= 0 ) ) {
+                            shipList[ i ].applyForce( ofVec2f( shipList[ j ].vel.x, 0 ) );
+                            shipList[ j ].applyForce( ofVec2f( shipList[ i ].vel.x, 0 ) );
+                        }
+                        if ( ( shipList[ i ].vel.y <= 0 && shipList[ j ].vel.y >= 0 ) || ( shipList[ j ].vel.y <= 0 && shipList[ i ].vel.y >= 0 ) ) {
+                            shipList[ i ].applyForce( ofVec2f( 0, shipList[ j ].vel.y ) );
+                            shipList[ j ].applyForce( ofVec2f( 0, shipList[ i ].vel.y ) );
+                        }
+                        
+                        /*float damage = 10;
                         shipList[ i ].health -= damage;
-                        shipList[ j ].health -= damage;
+                        shipList[ j ].health -= damage;*/
                     }
                 }
             }
