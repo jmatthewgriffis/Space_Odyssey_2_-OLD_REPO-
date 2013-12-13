@@ -16,9 +16,10 @@ void Enemy::setup() {
     
     // Matt
     generation = 0;
-    pos = ofGetWindowSize() / 2.0;
     vel.set( ofRandom(-1, 1), ofRandom(-1, 1));
     attack = true;
+    healthMax = 1000;
+    health = healthMax;
     
     //Mauricio
 //    counter = 0;
@@ -31,7 +32,7 @@ void Enemy::setup() {
         metroid[i].loadImage(frameNum + ".png");
     }
     
-    
+    pos = ofVec2f( ofGetWindowWidth() / 2.0 - metroid[ 0 ].getWidth() / 2.0, 0 ); //Matt
     
 }
 
@@ -120,6 +121,27 @@ void Enemy::draw(int &_frameNum){
     ofPushMatrix();{
         
         ofTranslate(pos.x , pos.y);
+        
+        { // Matt
+            // Draw the health bar
+            ofSetRectMode( OF_RECTMODE_CORNER );
+            float offset = 1;
+            float hoffSet = ( metroid[ 0 ].getWidth() * 0.25 ) / 2;
+            float voffSet = metroid[ 0 ].getHeight() - 50;
+            float offsetBar = 10;
+            float barHeight = 10;
+            float barLength = metroid[ 0 ].getWidth() * 0.75;
+            float currentHealth = ofMap( health, 0, healthMax, 0, barLength - offset * 2 );
+            // The border.
+            ofSetColor( 255 );
+            ofNoFill();
+            ofRect( hoffSet, voffSet, barLength, barHeight );
+            ofFill();
+            // The current health.
+            ofSetColor( 0, 255, 0 );
+            ofRect( hoffSet + offset, voffSet + offset, currentHealth, barHeight - offset * 2 );
+        } // End Matt
+        ofSetColor(255); //Matt
         metroid[_frameNum].draw(0,0);
         
     }ofPopMatrix();

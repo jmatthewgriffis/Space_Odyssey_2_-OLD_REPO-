@@ -28,6 +28,7 @@ public:
     ofVec2f vel;
     int generation;
     float theta = 30;
+    float healthMax;
     
     //Mauricio
     float d[4], health, size, attackCounter;
