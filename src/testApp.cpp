@@ -104,6 +104,7 @@ void testApp::update(){
                     Bullet tmp( shipList[ i ].pos, fireAng );
                     bulletList.push_back( tmp );
                     shipList[ i ].firePacer = shipList[ i ].pacerMax;
+                    shipList[ i ].applyAngularForce( 0.5, fireAng );
                 }
             }
         }
