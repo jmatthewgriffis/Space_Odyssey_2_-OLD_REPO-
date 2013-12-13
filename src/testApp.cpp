@@ -13,6 +13,9 @@ void testApp::setup(){
     
     { // Matt
         
+        gameState = 0;
+        startScreen.loadImage("screen")
+        
         // This one listens to the same port that we were sending to in the other app.
         mReceiver.setup( 12345 );
         
@@ -70,6 +73,8 @@ bool bShouldIErase2( SpaceShip &a ){
 
 //--------------------------------------------------------------
 void testApp::update(){
+    
+    if ( gameState == 0 ) return;
     
     checkOsc(); //Matt
     
@@ -131,6 +136,11 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    
+    if ( gameState == 0 ) {
+        
+        return;
+    }
     
     //secondBackground.draw();
     
