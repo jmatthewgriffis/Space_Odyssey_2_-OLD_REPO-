@@ -210,6 +210,10 @@ void testApp::keyPressed(int key){
         
         switch( key ) {
                 
+            case ' ':
+                if ( gameState == 0 ) gameState = 1;
+                break;
+                
                 // Player controls
                 
                 // Player One
