@@ -73,8 +73,10 @@ public:
     int counter, frameNum;
 //    ofVec2f pos;
     
+    //Matt
     void checkOsc();
-    
     ofxOscReceiver mReceiver;
+    int gameState;
+    ofImage startScreen;
     
 };
