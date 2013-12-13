@@ -243,7 +243,30 @@ void SpaceShip::draw(){
             
             //        ofTranslate( pos.x, pos.y);
             ofSetRectMode(OF_RECTMODE_CENTER);
-            ofEllipse( pos.x, pos.y, size, size);
+            //ofEllipse( pos.x, pos.y, size, size);
+            { // Matt
+                ofNoFill();
+                ofSetLineWidth(4);
+                // Draw the hollow track for the engine.
+                ofEllipse( pos.x, pos.y, size, size);
+                ofSetLineWidth(1);
+                ofFill();
+                ofPushMatrix();{
+                    ofTranslate( pos.x, pos.y );
+                    float rotAng = atan2( vel.y, vel.x ) + PI / 2;
+                    // Rotate to face in the direction of velocity.
+                    ofRotate(ofRadToDeg( rotAng ) );
+                    float mult = size / 2.5;
+                    float ang = PI / 5;
+                    // Draw the triangular ship.
+                    ofTriangle(0, -mult, sin(-ang) * mult, cos(-ang) * mult, sin(ang) * mult, cos(ang) * mult);
+                    ofSetLineWidth(2);
+                    // Draw the cross-braces to attach the ship to the track.
+                    ofLine(-size /2, 0, size / 2, 0);
+                    ofLine(0, -size /2, 0, size / 2);
+                    ofSetLineWidth(1);
+                }ofPopMatrix();
+            } // End Matt
             ofPushMatrix();{
                 
                 ofTranslate( pos.x, pos.y);
@@ -269,7 +292,7 @@ void SpaceShip::draw(){
                 // Draw the engine--Matt
                 ofSetRectMode( OF_RECTMODE_CENTER ); // Matt
                 ofSetColor( 255);
-                ofRect( sin(rotAngle) * engineSize, cos( rotAngle) * engineSize, engineSize, engineSize);
+                ofRect( sin(rotAngle) * engineSize * 1.5, cos( rotAngle) * engineSize * 1.5, engineSize, engineSize);
                 
                 
             }ofPopMatrix();
