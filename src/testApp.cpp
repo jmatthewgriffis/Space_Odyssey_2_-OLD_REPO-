@@ -12,6 +12,10 @@ void testApp::setup(){
     
     
     { // Matt
+        
+        // This one listens to the same port that we were sending to in the other app.
+        mReceiver.setup( 12345 );
+        
         killFrameRate = false; // Turn on the enemy and background, watch the framerate drop.
         // Maintenance
         ofSetVerticalSync( true );
@@ -45,7 +49,7 @@ void testApp::setup(){
     }
     
     
-
+    
 }
 
 //--------------------------------------------------------------
@@ -66,6 +70,8 @@ bool bShouldIErase2( SpaceShip &a ){
 
 //--------------------------------------------------------------
 void testApp::update(){
+    
+    checkOsc(); //Matt
     
     { // Mauricio
         //ship1.update();
@@ -107,11 +113,11 @@ void testApp::update(){
         }
         
         // AWESOME, come back to this later.
-//        if ( shipList[ 0 ].shootBullet && shipList[ 0 ].allowAction ) {
-//            float fireAng = shipList[ 0 ].rotAngle - PI;
-//            Bullet tmp( shipList[ 0 ].pos, fireAng );
-//            bulletList.push_back( tmp );
-//        }
+        //        if ( shipList[ 0 ].shootBullet && shipList[ 0 ].allowAction ) {
+        //            float fireAng = shipList[ 0 ].rotAngle - PI;
+        //            Bullet tmp( shipList[ 0 ].pos, fireAng );
+        //            bulletList.push_back( tmp );
+        //        }
     }
     
     
@@ -141,7 +147,7 @@ void testApp::draw(){
             metroid.draw(frameNum);
         }
         //    enemyFbo.end();
-//        enemyFbo.draw( ofGetWindowWidth() , ofGetWindowHeight());
+        //        enemyFbo.draw( ofGetWindowWidth() , ofGetWindowHeight());
     }
     
     { // Mauricio
@@ -204,15 +210,6 @@ void testApp::keyPressed(int key){
                 }
                 break;
                 
-            case 'e':
-            case 'E':
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 0 ) {
-                        shipList[ i ].rotateCWise = true;
-                    }
-                }
-                break;
-                
             case 'w':
             case 'W':
             {
@@ -224,9 +221,18 @@ void testApp::keyPressed(int key){
                 break;
             }
                 
+            case 'e':
+            case 'E':
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 0 ) {
+                        shipList[ i ].rotateCWise = true;
+                    }
+                }
+                break;
+                
                 // Player Two
-            case 'j':
-            case 'J':
+            case 'i':
+            case 'I':
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 1 ) {
                         shipList[ i ].rotateCCWise = true;
@@ -234,17 +240,8 @@ void testApp::keyPressed(int key){
                 }
                 break;
                 
-            case 'l':
-            case 'L':
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 1 ) {
-                        shipList[ i ].rotateCWise = true;
-                    }
-                }
-                break;
-                
-            case 'k':
-            case 'K':
+            case 'o':
+            case 'O':
             {
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 1 ) {
@@ -254,6 +251,16 @@ void testApp::keyPressed(int key){
                 break;
             }
                 
+            case 'P':
+            case 'p':
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 1 ) {
+                        shipList[ i ].rotateCWise = true;
+                    }
+                }
+                break;
+            
+                /*
                 // Player Three
             case 'v':
             case 'V':
@@ -310,6 +317,7 @@ void testApp::keyPressed(int key){
                 }
                 break;
             }
+                 */
                 
             { // Debug
                 
@@ -372,15 +380,6 @@ void testApp::keyReleased(int key){
                 }
                 break;
                 
-            case 'e':
-            case 'E':
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 0 ) {
-                        shipList[ i ].rotateCWise = false;
-                    }
-                }
-                break;
-                
             case 'w':
             case 'W':
                 for ( int i = 0; i < shipList.size(); i++ ) {
@@ -390,9 +389,18 @@ void testApp::keyReleased(int key){
                 }
                 break;
                 
+            case 'e':
+            case 'E':
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 0 ) {
+                        shipList[ i ].rotateCWise = false;
+                    }
+                }
+                break;
+                
                 // Player Two
-            case 'j':
-            case 'J':
+            case 'i':
+            case 'I':
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 1 ) {
                         shipList[ i ].rotateCCWise = false;
@@ -400,17 +408,8 @@ void testApp::keyReleased(int key){
                 }
                 break;
                 
-            case 'l':
-            case 'L':
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 1 ) {
-                        shipList[ i ].rotateCWise = false;
-                    }
-                }
-                break;
-                
-            case 'k':
-            case 'K':
+            case 'o':
+            case 'O':
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 1 ) {
                         shipList[ i ].fire = false;
@@ -418,12 +417,22 @@ void testApp::keyReleased(int key){
                 }
                 break;
                 
+            case 'p':
+            case 'P':
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 1 ) {
+                        shipList[ i ].rotateCWise = false;
+                    }
+                }
+                break;
+                
+                /*
                 // Player Three
             case 'v':
             case 'V':
                 for ( int i = 0; i < shipList.size(); i++ ) {
                     if ( shipList[ i ].controlIndex == 2 ) {
-                    shipList[ i ].rotateCCWise = false;
+                        shipList[ i ].rotateCCWise = false;
                     }
                 }
                 break;
@@ -470,6 +479,8 @@ void testApp::keyReleased(int key){
                     }
                 }
                 break;
+                 */
+                
         } // End Matt
     }
 }
@@ -537,10 +548,10 @@ void testApp::collideSpaceshipsAndSpaceships() {
                     if ( dist < shipList[ i ].size / 2 + shipList[ j ].size / 2 ) {
                         // if traveling in the same direction lose some velocity from impact.
                         /*float dampen = 0.9;
-                        shipList[ i ].vel.x *= dampen;
-                        shipList[ j ].vel.x *= dampen;
-                        shipList[ i ].vel.y *= dampen;
-                        shipList[ j ].vel.y *= dampen;*/
+                         shipList[ i ].vel.x *= dampen;
+                         shipList[ j ].vel.x *= dampen;
+                         shipList[ i ].vel.y *= dampen;
+                         shipList[ j ].vel.y *= dampen;*/
                         
                         // if traveling in different direction apply the opposing force in the opposite direction.
                         if ( ( shipList[ i ].vel.x <= 0 && shipList[ j ].vel.x >= 0 ) || ( shipList[ j ].vel.x <= 0 && shipList[ i ].vel.x >= 0 ) ) {
@@ -553,8 +564,8 @@ void testApp::collideSpaceshipsAndSpaceships() {
                         }
                         
                         /*float damage = 10;
-                        shipList[ i ].health -= damage;
-                        shipList[ j ].health -= damage;*/
+                         shipList[ i ].health -= damage;
+                         shipList[ j ].health -= damage;*/
                     }
                 }
             }
@@ -606,5 +617,111 @@ void testApp::drawGalaxy() {
             ofTranslate( ofGetWindowWidth()/2, ofGetWindowHeight() );
             branch( 200, -45, 45, 1, true );
         }ofPopMatrix();
+    }
+}
+
+//--------------------------------------------------------------
+void testApp::checkOsc() {
+    
+    while( mReceiver.hasWaitingMessages() ) {
+        ofxOscMessage m;
+        mReceiver.getNextMessage( &m );
+        
+        string addr = m.getAddress();
+        
+        if ( addr == "/keyPressed" ) {
+            
+            int key1, key2, key3, key4, key5, key6;
+            key1 = m.getArgAsInt32( 0 );
+            key2 = m.getArgAsInt32( 1 );
+            key3 = m.getArgAsInt32( 2 );
+            key4 = m.getArgAsInt32( 3 );
+            key5 = m.getArgAsInt32( 4 );
+            key6 = m.getArgAsInt32( 5 );
+            
+            if ( key1 == 1 ) {
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 2 ) {
+                        shipList[ i ].rotateCCWise = true;
+                    }
+                }
+            } else {
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 2 ) {
+                        shipList[ i ].rotateCCWise = false;
+                    }
+                }
+            }
+            
+            if ( key2 == 1 ) {
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 2 ) {
+                        shipList[ i ].fire = true;
+                    }
+                }
+            } else {
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 2 ) {
+                        shipList[ i ].fire = false;
+                    }
+                }
+            }
+            
+            if ( key3 == 1 ) {
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 2 ) {
+                        shipList[ i ].rotateCWise = true;
+                    }
+                }
+            } else {
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 2 ) {
+                        shipList[ i ].rotateCWise = false;
+                    }
+                }
+            }
+            
+            if ( key4 == 1 ) {
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 3 ) {
+                        shipList[ i ].rotateCCWise = true;
+                    }
+                }
+            } else {
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 3 ) {
+                        shipList[ i ].rotateCCWise = false;
+                    }
+                }
+            }
+            
+            if ( key5 == 1 ) {
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 3 ) {
+                        shipList[ i ].fire = true;
+                    }
+                }
+            } else {
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 3 ) {
+                        shipList[ i ].fire = false;
+                    }
+                }
+            }
+            
+            if ( key6 == 1 ) {
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 3 ) {
+                        shipList[ i ].rotateCWise = true;
+                    }
+                }
+            } else {
+                for ( int i = 0; i < shipList.size(); i++ ) {
+                    if ( shipList[ i ].controlIndex == 3 ) {
+                        shipList[ i ].rotateCWise = false;
+                    }
+                }
+            }
+        }
     }
 }

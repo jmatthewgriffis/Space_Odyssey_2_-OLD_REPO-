@@ -70,4 +70,9 @@ public:
     //Values passed to the enemy
     int counter, frameNum;
 //    ofVec2f pos;
+    
+    void checkOsc();
+    
+    ofxOscReceiver mReceiver;
+    
 };
