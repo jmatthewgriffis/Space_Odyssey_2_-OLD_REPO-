@@ -20,6 +20,7 @@ void Enemy::setup() {
     attack = true;
     healthMax = 1000;
     health = healthMax;
+    bDestroyMe = false;
     
     //Mauricio
 //    counter = 0;
@@ -38,6 +39,9 @@ void Enemy::setup() {
 
 void Enemy::update(vector <SpaceShip> _tmp){
     
+    if ( health <= 0 ) {
+        bDestroyMe = true;
+    }
        
     // Matt
     pos += vel;

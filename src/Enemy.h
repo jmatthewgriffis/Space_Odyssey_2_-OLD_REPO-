@@ -29,6 +29,7 @@ public:
     int generation;
     float theta = 30;
     float healthMax;
+    bool bDestroyMe;
     
     //Mauricio
     float d[4], health, size, attackCounter;

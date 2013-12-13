@@ -94,7 +94,7 @@ void testApp::update(){
     collideSpaceshipsAndEnemy();
     
     { // Matt
-        metroid.update(shipList);
+        if ( !metroid.bDestroyMe ) metroid.update(shipList);
         
         for ( int i = 0; i < shipList.size(); i++ ) {
             shipList[ i ].update();
@@ -146,7 +146,7 @@ void testApp::draw(){
             //cam.setupPerspective();
             /*if ( killFrameRate ) */drawGalaxy();
             //Mauricio: For some reason the only way that our metroid animation works is by passing the frameNum from the testApp. I initally had everything inside the class but it didn't work. Passing the frameNum throught the draw it works.
-            metroid.draw(frameNum);
+            if ( !metroid.bDestroyMe ) metroid.draw(frameNum);
         }
         //    enemyFbo.end();
         //        enemyFbo.draw( ofGetWindowWidth() , ofGetWindowHeight());
