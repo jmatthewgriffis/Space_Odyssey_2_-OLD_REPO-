@@ -177,6 +177,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				CDDCD1B4185BA4360021AFAF /* ofxOsc */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -211,21 +212,14 @@
 			name = "3rd party frameworks";
 			sourceTree = "<group>";
 		};
-		CDDCD1B3185BA4360021AFAF /* addons */ = {
-			isa = PBXGroup;
-			children = (
-				CDDCD1B4185BA4360021AFAF /* ofxOsc */,
-			);
-			path = addons;
-			sourceTree = SOURCE_ROOT;
-		};
 		CDDCD1B4185BA4360021AFAF /* ofxOsc */ = {
 			isa = PBXGroup;
 			children = (
 				CDDCD1B5185BA4360021AFAF /* libs */,
 				CDDCD1D2185BA4360021AFAF /* src */,
 			);
-			path = ofxOsc;
+			name = ofxOsc;
+			path = addons/ofxOsc;
 			sourceTree = "<group>";
 		};
 		CDDCD1B5185BA4360021AFAF /* libs */ = {
@@ -358,7 +352,6 @@
 			isa = PBXGroup;
 			children = (
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
-				CDDCD1B3185BA4360021AFAF /* addons */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				6763661318403CCA008A5BE0 /* SpaceShip.cpp */,
@@ -646,7 +639,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
-				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxOsc/libs/oscpack/src/ ../../../addons/ofxOsc/libs/oscpack/src/";
+				USER_HEADER_SEARCH_PATHS = ../../../addons/ofxOsc/libs/oscpack/src/;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -732,7 +725,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxOsc/libs/oscpack/src/ ../../../addons/ofxOsc/libs/oscpack/src/";
+				USER_HEADER_SEARCH_PATHS = ../../../addons/ofxOsc/libs/oscpack/src/;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
