@@ -24,6 +24,7 @@
 #include "WarBackground.h"
 
 
+
 // Question for Charlie: how to pass a function into a function.
 
 class testApp : public ofBaseApp{
