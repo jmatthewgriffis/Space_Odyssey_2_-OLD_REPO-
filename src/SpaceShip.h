@@ -48,7 +48,7 @@ class SpaceShip {
     // Matt
     void applyForce( ofVec2f _force );
     void applyAngularForce( float _force, float _ang );
-    float boost, engineSize, health, healthMax;
+    float boost, engineSize, health, healthMax, maxSpeed;
     ofVec2f vel, acc;
     int controlIndex, fireTimer, firePacer, timerMax, pacerMax;
     bool bDestroyMe;

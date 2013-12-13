@@ -51,6 +51,7 @@ void SpaceShip::setup( int _index, ofVec2f _pos, ofColor _colorPlayer/*, ofImage
         engineSize = size / 3;
         healthMax = 100;
         health = healthMax;
+        maxSpeed = 7;
     }
 }
 
@@ -209,7 +210,6 @@ void SpaceShip::update(){
         vel += acc;
         
         // Limit the velocity.
-        float maxSpeed = 10;
         if ( fabs( vel.x ) > maxSpeed ) {
             vel.x = ( vel.x / fabs( vel.x ) ) * maxSpeed;
         }
@@ -309,6 +309,25 @@ void SpaceShip::draw(){
             
             
         }ofPopMatrix();
+    }
+    
+    ofSetColor(255);
+    if (controlIndex == 0) {
+        if (rotateCCWise) ofDrawBitmapString("q", 10, 10);
+        if (rotateCWise) ofDrawBitmapString("e", 20, 10);
+        if (fire) ofDrawBitmapString("w", 30, 10);
+    } else if (controlIndex == 1) {
+        if (rotateCCWise) ofDrawBitmapString("j", 40, 10);
+        if (rotateCWise) ofDrawBitmapString("l", 50, 10);
+        if (fire) ofDrawBitmapString("k", 60, 10);
+    } else if (controlIndex == 2) {
+        if (rotateCCWise) ofDrawBitmapString("v", 70, 10);
+        if (rotateCWise) ofDrawBitmapString("n", 80, 10);
+        if (fire) ofDrawBitmapString("b", 90, 10);
+    } else if (controlIndex == 3) {
+        if (rotateCCWise) ofDrawBitmapString("L", 100, 10);
+        if (rotateCWise) ofDrawBitmapString("D", 110, 10);
+        if (fire) ofDrawBitmapString("R", 120, 10);
     }
 }
 
