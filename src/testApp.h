@@ -60,6 +60,8 @@ public:
     vector< Bullet > bulletList;
     void collideSpaceshipsAndBullets();
     void collideSpaceshipsAndSpaceships();
+    void collideEnemyAndBullets();
+    void collideSpaceshipsAndEnemy();
     
     // Mauricio
     //SpaceShip ship1;

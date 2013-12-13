@@ -90,7 +90,8 @@ void testApp::update(){
     
     collideSpaceshipsAndBullets();
     collideSpaceshipsAndSpaceships();
-    
+    collideEnemyAndBullets();
+    collideSpaceshipsAndEnemy();
     
     { // Matt
         metroid.update(shipList);
@@ -262,64 +263,64 @@ void testApp::keyPressed(int key){
                     }
                 }
                 break;
-            
+                
                 /*
-                // Player Three
-            case 'v':
-            case 'V':
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 2 ) {
-                        shipList[ i ].rotateCCWise = true;
-                    }
-                }
-                break;
-                
-            case 'n':
-            case 'N':
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 2 ) {
-                        shipList[ i ].rotateCWise = true;
-                    }
-                }
-                break;
-                
-            case 'b':
-            case 'B':
-            {
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 2 ) {
-                        shipList[ i ].fire = true;
-                    }
-                }
-                break;
-            }
-                
-                // Player Four
-            case OF_KEY_LEFT:
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 3 ) {
-                        shipList[ i ].rotateCCWise = true;
-                    }
-                }
-                break;
-                
-            case OF_KEY_RIGHT:
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 3 ) {
-                        shipList[ i ].rotateCWise = true;
-                    }
-                }
-                break;
-                
-            case OF_KEY_DOWN:
-            {
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 3 ) {
-                        shipList[ i ].fire = true;
-                    }
-                }
-                break;
-            }
+                 // Player Three
+                 case 'v':
+                 case 'V':
+                 for ( int i = 0; i < shipList.size(); i++ ) {
+                 if ( shipList[ i ].controlIndex == 2 ) {
+                 shipList[ i ].rotateCCWise = true;
+                 }
+                 }
+                 break;
+                 
+                 case 'n':
+                 case 'N':
+                 for ( int i = 0; i < shipList.size(); i++ ) {
+                 if ( shipList[ i ].controlIndex == 2 ) {
+                 shipList[ i ].rotateCWise = true;
+                 }
+                 }
+                 break;
+                 
+                 case 'b':
+                 case 'B':
+                 {
+                 for ( int i = 0; i < shipList.size(); i++ ) {
+                 if ( shipList[ i ].controlIndex == 2 ) {
+                 shipList[ i ].fire = true;
+                 }
+                 }
+                 break;
+                 }
+                 
+                 // Player Four
+                 case OF_KEY_LEFT:
+                 for ( int i = 0; i < shipList.size(); i++ ) {
+                 if ( shipList[ i ].controlIndex == 3 ) {
+                 shipList[ i ].rotateCCWise = true;
+                 }
+                 }
+                 break;
+                 
+                 case OF_KEY_RIGHT:
+                 for ( int i = 0; i < shipList.size(); i++ ) {
+                 if ( shipList[ i ].controlIndex == 3 ) {
+                 shipList[ i ].rotateCWise = true;
+                 }
+                 }
+                 break;
+                 
+                 case OF_KEY_DOWN:
+                 {
+                 for ( int i = 0; i < shipList.size(); i++ ) {
+                 if ( shipList[ i ].controlIndex == 3 ) {
+                 shipList[ i ].fire = true;
+                 }
+                 }
+                 break;
+                 }
                  */
                 
             { // Debug
@@ -432,58 +433,58 @@ void testApp::keyReleased(int key){
                 break;
                 
                 /*
-                // Player Three
-            case 'v':
-            case 'V':
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 2 ) {
-                        shipList[ i ].rotateCCWise = false;
-                    }
-                }
-                break;
-                
-            case 'n':
-            case 'N':
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 2 ) {
-                        shipList[ i ].rotateCWise = false;
-                    }
-                }
-                break;
-                
-            case 'b':
-            case 'B':
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 2 ) {
-                        shipList[ i ].fire = false;
-                    }
-                }
-                break;
-                
-                // Player Four
-            case OF_KEY_LEFT:
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 3 ) {
-                        shipList[ i ].rotateCCWise = false;
-                    }
-                }
-                break;
-                
-            case OF_KEY_RIGHT:
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 3 ) {
-                        shipList[ i ].rotateCWise = false;
-                    }
-                }
-                break;
-                
-            case OF_KEY_DOWN:
-                for ( int i = 0; i < shipList.size(); i++ ) {
-                    if ( shipList[ i ].controlIndex == 3 ) {
-                        shipList[ i ].fire = false;
-                    }
-                }
-                break;
+                 // Player Three
+                 case 'v':
+                 case 'V':
+                 for ( int i = 0; i < shipList.size(); i++ ) {
+                 if ( shipList[ i ].controlIndex == 2 ) {
+                 shipList[ i ].rotateCCWise = false;
+                 }
+                 }
+                 break;
+                 
+                 case 'n':
+                 case 'N':
+                 for ( int i = 0; i < shipList.size(); i++ ) {
+                 if ( shipList[ i ].controlIndex == 2 ) {
+                 shipList[ i ].rotateCWise = false;
+                 }
+                 }
+                 break;
+                 
+                 case 'b':
+                 case 'B':
+                 for ( int i = 0; i < shipList.size(); i++ ) {
+                 if ( shipList[ i ].controlIndex == 2 ) {
+                 shipList[ i ].fire = false;
+                 }
+                 }
+                 break;
+                 
+                 // Player Four
+                 case OF_KEY_LEFT:
+                 for ( int i = 0; i < shipList.size(); i++ ) {
+                 if ( shipList[ i ].controlIndex == 3 ) {
+                 shipList[ i ].rotateCCWise = false;
+                 }
+                 }
+                 break;
+                 
+                 case OF_KEY_RIGHT:
+                 for ( int i = 0; i < shipList.size(); i++ ) {
+                 if ( shipList[ i ].controlIndex == 3 ) {
+                 shipList[ i ].rotateCWise = false;
+                 }
+                 }
+                 break;
+                 
+                 case OF_KEY_DOWN:
+                 for ( int i = 0; i < shipList.size(); i++ ) {
+                 if ( shipList[ i ].controlIndex == 3 ) {
+                 shipList[ i ].fire = false;
+                 }
+                 }
+                 break;
                  */
                 
         } // End Matt
@@ -573,6 +574,33 @@ void testApp::collideSpaceshipsAndSpaceships() {
                          shipList[ j ].health -= damage;*/
                     }
                 }
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------
+void testApp::collideEnemyAndBullets() {
+    
+    { // Matt
+        for ( int i = 0; i < bulletList.size(); i++ ) {
+            float dist = bulletList[ i ].pos.distance( ofVec2f( metroid.pos.x + 400, metroid.pos.y + 250 ) );
+            if ( dist < 350 ) {
+                metroid.health -= bulletList[ i ].damage;
+                bulletList[ i ].bDestroyMe = true;
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------
+void testApp::collideSpaceshipsAndEnemy() {
+    
+    { // Matt
+        for ( int i = 0; i < shipList.size(); i++ ) {
+            float dist = shipList[ i ].pos.distance( ofVec2f( metroid.pos.x + 400, metroid.pos.y + 250 ) );
+            if ( dist < 350 ) {
+                shipList[ i ].health -= 1;
             }
         }
     }
