@@ -10,6 +10,7 @@ Parsons MFA Design and Technology -
 Fall 2013 semester - 
 Algorithmic Animation
 
-My other work for that class can be <a target="_blank" href="https://github.com/jmatthewgriffis/griffis_algo2013">found here</a>.
+My other work for that class can be <a target="_blank" href="https://github.com/jmatthewgriffis/griffis_algo2013">found here</a>;
+Mauricio's can be <a target="_blank" href="https://github.com/sheva29/sanchez-duque_algo2013">found here</a>.
 
 -J. Matthew Griffis
