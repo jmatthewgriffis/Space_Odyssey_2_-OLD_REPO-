@@ -9,13 +9,13 @@
 #include "SpaceShip.h"
 
 
-void SpaceShip::setup( int _index, ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*/){
+void SpaceShip::setup( int _index, ofVec2f _pos/*, ofColor _colorPlayer*/, ofImage _spaceImage){
     
     { // Mauricio
         pos = _pos;
         //vel = _vel;
-        colorPlayer = _colorPlayer;
-        /*spaceImage = _spaceImage;*/
+//        colorPlayer = _colorPlayer;
+        spaceImage = _spaceImage;
         //spaceShipSize = 50;
         //rotAngle = 0;
         //size = 150;
@@ -249,7 +249,7 @@ void SpaceShip::update(){
 void SpaceShip::draw(){
     
     { // Mauricio
-        ofSetColor( colorPlayer);
+//        ofSetColor( colorPlayer);
         ofPushMatrix();{
             
             //        ofTranslate( pos.x, pos.y);
@@ -259,7 +259,8 @@ void SpaceShip::draw(){
                 ofNoFill();
                 ofSetLineWidth(4);
                 // Draw the hollow track for the engine.
-                ofEllipse( pos.x, pos.y, size, size);
+                
+//                ofEllipse( pos.x, pos.y, size, size);
                 ofSetLineWidth(1);
                 ofFill();
                 ofPushMatrix();{
@@ -270,11 +271,12 @@ void SpaceShip::draw(){
                     float mult = size / 2.5;
                     float ang = PI / 5;
                     // Draw the triangular ship.
-                    ofTriangle(0, -mult, sin(-ang) * mult, cos(-ang) * mult, sin(ang) * mult, cos(ang) * mult);
+                    spaceImage.draw(0, 0);
+//                    ofTriangle(0, -mult, sin(-ang) * mult, cos(-ang) * mult, sin(ang) * mult, cos(ang) * mult);
                     ofSetLineWidth(2);
                     // Draw the cross-braces to attach the ship to the track.
-                    ofLine(-size /2, 0, size / 2, 0);
-                    ofLine(0, -size /2, 0, size / 2);
+//                    ofLine(-size /2, 0, size / 2, 0);
+//                    ofLine(0, -size /2, 0, size / 2);
                     ofSetLineWidth(1);
                 }ofPopMatrix();
             } // End Matt
@@ -303,7 +305,7 @@ void SpaceShip::draw(){
                 // Draw the engine--Matt
                 ofSetRectMode( OF_RECTMODE_CENTER ); // Matt
                 ofSetColor( 255);
-                ofRect( sin(rotAngle) * engineSize * 1.5, cos( rotAngle) * engineSize * 1.5, engineSize, engineSize);
+                ofRect( sin(rotAngle) * engineSize * 3, cos( rotAngle) * engineSize * 3, engineSize, engineSize);
                 
                 
             }ofPopMatrix();

@@ -35,9 +35,12 @@ void testApp::setup(){
         { // Make the ships.
             float offset = 100;
             for ( int i = 0; i < 4; i++ ) {
+                
                 SpaceShip tmp;
+                string picNum = ofToString(i);
                 // We pass in the value of i to set a permanent "control index," to which the specific controls are tied. That way if a ship gets destroyed and the vector indicies get changed, the controls stay the same. -Matt
-                tmp.setup( i, ofVec2f( offset, offset ), ofColor( ofColor( 20, 20, 200 ) ) );
+                spaceShip.loadImage("spaceship" + picNum + ".png");
+                tmp.setup( i, ofVec2f( offset, offset )/*, ofColor( ofColor( 20, 20, 200 ) ),*/, spaceShip );
                 shipList.push_back( tmp );
             }
             // Individual pos
@@ -45,9 +48,9 @@ void testApp::setup(){
             shipList[ 2 ].pos.set( offset, ofGetWindowHeight() - offset );
             shipList[ 3 ].pos.set( ofGetWindowWidth() - offset, ofGetWindowHeight() - offset );
             // Individual color
-            shipList[ 1 ].colorPlayer = ofColor( 200, 20, 20 );
-            shipList[ 2 ].colorPlayer = ofColor( 100, 80, 20 );
-            shipList[ 3 ].colorPlayer = ofColor( 0, 255, 20 );
+//            shipList[ 1 ].colorPlayer = ofColor( 200, 20, 20 );
+//            shipList[ 2 ].colorPlayer = ofColor( 100, 80, 20 );
+//            shipList[ 3 ].colorPlayer = ofColor( 0, 255, 20 );
         }
     }
     
@@ -76,7 +79,7 @@ void testApp::update(){
     
     if ( gameState == 0 ) return;
     
-    checkOsc(); //Matt
+     checkOsc(); //Matt
     
     { // Mauricio
         //ship1.update();
@@ -138,8 +141,10 @@ void testApp::update(){
 void testApp::draw(){
     
     if ( gameState == 0 ) {
-        //ofSetRectMode(OF_RECTMODE_CENTER);
-        startScreen.draw( 0, 0, ofGetWindowWidth(), ofGetWindowHeight());
+
+        ofSetRectMode(OF_RECTMODE_CORNER);
+        startScreen.draw(0,0, ofGetWindowWidth(), ofGetWindowHeight());
+
         return;
     }
     
@@ -218,6 +223,8 @@ void testApp::keyPressed(int key){
                 // Player controls
                 
                 // Player One
+            
+      
             case 'q':
             case 'Q':
                 for ( int i = 0; i < shipList.size(); i++ ) {

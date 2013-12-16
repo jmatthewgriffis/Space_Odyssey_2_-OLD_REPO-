@@ -21,7 +21,7 @@ class SpaceShip {
     // Mauricio
     
 //    SpaceShip(ofVec2f _pos, ofVec2f _vel, ofColor _colorPlayer/*, ofImage _spaceImage*/);
-    void setup(int _index /* Matt--I added this int. */, ofVec2f _pos, ofColor _colorPlayer/*, ofImage _spaceImage*/);
+    void setup(int _index /* Matt--I added this int. */, ofVec2f _pos, /*ofColor _colorPlayer, */ofImage _spaceImage);
     void draw();
     void update();
     
@@ -29,7 +29,7 @@ class SpaceShip {
     //These are unique to the players
     ofVec2f pos;
     //float vel;
-    ofColor colorPlayer;
+    //ofColor colorPlayer;
     ofImage spaceImage;
     
     //Universal Variables
